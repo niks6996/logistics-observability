@@ -1,0 +1,45 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: logistics-api
+  namespace: monitoring
+  labels: {release: obs}
+spec:
+  namespaceSelector:
+    matchNames: [logistics]
+  selector:
+    matchLabels: {app: logistics-api}
+  endpoints:
+    - {port: http, path: /metrics, interval: 15s}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: logistics-alerts
+  namespace: monitoring
+  labels: {release: obs}
+spec:
+  groups:
+    - name: logistics
+      rules:
+        - alert: LogisticsHighErrorRate
+          expr: sum(rate(logistics_requests_total{status=~"5.."}[2m])) / clamp_min(sum(rate(logistics_requests_total[2m])), 0.001) > 0.05
+          for: 1m
+          labels: {severity: warning, project: logistics}
+          annotations:
+            summary: Logistics API error ratio exceeds 5 percent
+            runbook_url: docs/runbooks.md#high-error-rate
+        - alert: LogisticsHighLatency
+          expr: histogram_quantile(0.95, sum by (le) (rate(logistics_request_duration_seconds_bucket[2m]))) > 0.5
+          for: 1m
+          labels: {severity: warning, project: logistics}
+          annotations:
+            summary: Logistics API p95 latency exceeds 500ms
+            runbook_url: docs/runbooks.md#high-latency
+        - alert: LogisticsUnavailable
+          expr: (sum(up{namespace="logistics",service="logistics-api"}) == 0) or absent(up{namespace="logistics",service="logistics-api"})
+          for: 1m
+          labels: {severity: critical, project: logistics}
+          annotations:
+            summary: No logistics API scrape target is available
+            runbook_url: docs/runbooks.md#unavailable

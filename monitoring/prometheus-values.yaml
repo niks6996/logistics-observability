@@ -1,0 +1,39 @@
+# Lab configuration: ephemeral storage and small retention, no public ingress.
+grafana:
+  persistence:
+    enabled: false
+  additionalDataSources:
+    - name: Loki
+      uid: loki
+      type: loki
+      access: proxy
+      url: http://loki-gateway.monitoring.svc.cluster.local
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+prometheus:
+  prometheusSpec:
+    retention: 6h
+    scrapeInterval: 15s
+    evaluationInterval: 15s
+    resources:
+      requests: {cpu: 100m, memory: 256Mi}
+      limits: {memory: 1Gi}
+alertmanager:
+  config:
+    global:
+      resolve_timeout: 1m
+    route:
+      receiver: "null"
+      group_by: [alertname]
+      group_wait: 10s
+      group_interval: 30s
+      repeat_interval: 1h
+    receivers:
+      - name: "null"
+# These control-plane endpoints are not exposed by kind.
+kubeControllerManager: {enabled: false}
+kubeScheduler: {enabled: false}
+kubeEtcd: {enabled: false}
+kubeProxy: {enabled: false}

@@ -1,0 +1,88 @@
+name: Observability lab
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m unittest discover -s tests -v
+      - run: docker build -t logistics-api:lab .
+      - uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: logistics-api:lab
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          exit-code: '1'
+  integration:
+    needs: api-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: azure/setup-helm@v4.3.0
+        with: {version: v3.17.3}
+      - uses: helm/kind-action@v1.12.0
+        with: {cluster_name: observability}
+      - run: |
+          docker build -t logistics-api:lab .
+          kind load docker-image logistics-api:lab --name observability
+          bash scripts/deploy.sh
+      - name: Forward lab services
+        run: |
+          kubectl port-forward -n logistics svc/logistics-api 8080:8080 > /tmp/api-forward.log 2>&1 &
+          kubectl port-forward -n monitoring svc/obs-kube-prometheus-stack-prometheus 9090:9090 > /tmp/prom-forward.log 2>&1 &
+          kubectl port-forward -n monitoring svc/loki-gateway 3100:80 > /tmp/loki-forward.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:8080/readyz && curl -fsS http://localhost:9090/-/ready; then exit 0; fi
+            sleep 2
+          done
+          exit 1
+      - name: Verify metrics, logs and error alert lifecycle
+        run: |
+          python scripts/traffic.py --seconds 60
+          python scripts/verify.py metrics
+          python scripts/verify.py logs
+          python scripts/traffic.py --mode error --seconds 180
+          python scripts/verify.py firing
+          python scripts/traffic.py --seconds 180
+          python scripts/verify.py resolved
+      - name: Verify latency alert lifecycle
+        run: |
+          python scripts/traffic.py --mode slow --seconds 180
+          python scripts/verify.py latency-firing
+          python scripts/traffic.py --seconds 180
+          python scripts/verify.py latency-resolved
+      - name: Verify outage alert lifecycle
+        run: |
+          kubectl scale deployment/logistics-api -n logistics --replicas=0
+          python scripts/verify.py down-firing
+          kubectl scale deployment/logistics-api -n logistics --replicas=2
+          kubectl rollout status deployment/logistics-api -n logistics --timeout=180s
+          python scripts/verify.py down-resolved
+      - name: Collect diagnostics
+        if: always()
+        run: |
+          mkdir -p evidence
+          kubectl get pods -A -o wide > evidence/pods.txt
+          kubectl get events -A --sort-by=.lastTimestamp > evidence/events.txt
+          kubectl logs -n logistics -l app=logistics-api --all-containers --tail=100 > evidence/api-logs.txt 2>&1 || true
+          kubectl get prometheusrules,servicemonitors -n monitoring -o yaml > evidence/monitoring-resources.yaml
+          helm list -n monitoring -o json > evidence/chart-versions.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: observability-evidence
+          path: evidence/
+          retention-days: 14
+      - name: Clean up disposable cluster
+        if: always()
+        run: kind delete cluster --name observability

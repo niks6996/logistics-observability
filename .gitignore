@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+*.secret.yaml
+evidence/*
+!evidence/README.md

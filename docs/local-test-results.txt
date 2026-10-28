@@ -1,0 +1,15 @@
+Local API validation only. Kubernetes not executed.
+{"timestamp": 1793199871.8111923, "service": "logistics-api", "request_id": "1418678d-79a8-46ca-bf39-7536a5fa1589", "route": "/deliveries/:id", "status": 200, "duration_seconds": 0.00013506299910659436}
+{"timestamp": 1793199871.8127513, "service": "logistics-api", "request_id": "a46a0971-9867-42a7-bc8d-dd89e6513208", "route": "/simulate/error", "status": 500, "duration_seconds": 0.00018930599981104024}
+{"timestamp": 1793199872.5640728, "service": "logistics-api", "request_id": "5a5555ce-30a1-45cd-b63a-494b43ec217e", "route": "/simulate/slow", "status": 200, "duration_seconds": 0.7503835129991785}
+{"timestamp": 1793199872.5662937, "service": "logistics-api", "request_id": "1e3a11c3-3d4f-4d72-89f7-f45e0af7d965", "route": "/deliveries/:id", "status": 200, "duration_seconds": 0.00030900599995220546}
+{"timestamp": 1793199872.571468, "service": "logistics-api", "request_id": "aba79aa5-f2b9-4edd-9d25-88c87db35bea", "route": "/unknown", "status": 404, "duration_seconds": 8.347599941771477e-05}
+test_delivery_and_correlation (test_api.ApiTests.test_delivery_and_correlation) ... ok
+test_fault_metrics_and_cardinality (test_api.ApiTests.test_fault_metrics_and_cardinality) ... ok
+test_probes (test_api.ApiTests.test_probes) ... ok
+test_simulation_disabled_by_default (test_api.ApiTests.test_simulation_disabled_by_default) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.266s
+
+OK
