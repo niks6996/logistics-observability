@@ -72,6 +72,9 @@ jobs:
         if: always()
         run: |
           mkdir -p evidence
+          kubectl describe pod loki-0 -n monitoring > evidence/loki-description.txt 2>&1 || true
+          kubectl logs loki-0 -n monitoring -c loki --tail=200 > evidence/loki-current.txt 2>&1 || true
+          kubectl logs loki-0 -n monitoring -c loki --previous --tail=200 > evidence/loki-previous.txt 2>&1 || true
           kubectl get pods -A -o wide > evidence/pods.txt
           kubectl get events -A --sort-by=.lastTimestamp > evidence/events.txt
           kubectl logs -n logistics -l app=logistics-api --all-containers --tail=100 > evidence/api-logs.txt 2>&1 || true
@@ -86,4 +89,5 @@ jobs:
       - name: Clean up disposable cluster
         if: always()
         run: kind delete cluster --name observability
+
 
