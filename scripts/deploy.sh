@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
+# Tested Helm chart versions, with optional environment overrides.
+PROMETHEUS_CHART_VERSION="${PROMETHEUS_CHART_VERSION:-92.14.1}"
+LOKI_CHART_VERSION="${LOKI_CHART_VERSION:-7.5.0}"
+ALLOY_CHART_VERSION="${ALLOY_CHART_VERSION:-1.14.4}"
 cd "$(dirname "$0")/.."
 # This script installs into the CURRENT kubectl context. Use a disposable lab.
 kubectl config current-context
