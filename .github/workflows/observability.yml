@@ -68,6 +68,33 @@ jobs:
           kubectl scale deployment/logistics-api -n logistics --replicas=2
           kubectl rollout status deployment/logistics-api -n logistics --timeout=180s
           python scripts/verify.py down-resolved
+      - name: Capture Grafana dashboard
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+
+          kubectl port-forward -n monitoring svc/obs-grafana 3000:80 > /tmp/grafana-forward.log 2>&1 &
+
+          ready=false
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:3000/api/health; then
+              ready=true
+              break
+            fi
+            sleep 2
+          done
+          if [ "$ready" != "true" ]; then
+            echo "Grafana did not become reachable"
+            exit 1
+          fi
+
+          python scripts/traffic.py --seconds 180 > /tmp/dashboard-traffic.log 2>&1 &
+          traffic_pid=$!
+          sleep 60
+          python scripts/verify.py metrics
+          python scripts/capture_dashboard.py
+          wait "$traffic_pid"
+
       - name: Collect diagnostics
         if: always()
         run: |
@@ -89,5 +116,6 @@ jobs:
       - name: Clean up disposable cluster
         if: always()
         run: kind delete cluster --name observability
+
 
 
