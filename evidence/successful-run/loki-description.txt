@@ -3,7 +3,7 @@ Namespace:        monitoring
 Priority:         0
 Service Account:  loki
 Node:             observability-control-plane/172.18.0.2
-Start Time:       Thu, 29 Oct 2026 07:31:36 +0000
+Start Time:       Thu, 29 Oct 2026 13:23:46 +0000
 Labels:           app.kubernetes.io/component=single-binary
                   app.kubernetes.io/instance=loki
                   app.kubernetes.io/name=loki
@@ -20,7 +20,7 @@ IPs:
 Controlled By:  StatefulSet/loki
 Containers:
   loki:
-    Container ID:  containerd://d4f631494f8b2c974790375245054f50924e4a934a11d5f5f77f884d28d989b3
+    Container ID:  containerd://0a207b832d463378ffb8c26a46c25bc2e35742f8bd467ee6d66ae02ed38d9173
     Image:         docker.io/grafana/loki:3.6.11
     Image ID:      docker.io/grafana/loki@sha256:44148ad243c07957113baea950ee5ba9b0c8eff8d7e38ff3cc1c0af705790945
     Ports:         3100/TCP, 9095/TCP, 7946/TCP
@@ -29,7 +29,7 @@ Containers:
       -config.file=/etc/loki/config/config.yaml
       -target=all
     State:          Running
-      Started:      Thu, 29 Oct 2026 07:31:40 +0000
+      Started:      Thu, 29 Oct 2026 13:23:50 +0000
     Ready:          True
     Restart Count:  0
     Limits:
@@ -45,15 +45,15 @@ Containers:
       /rules from sc-rules-volume (rw)
       /tmp from tmp (rw)
       /var/loki from lab-loki-data (rw)
-      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-hs8qx (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-4jjmc (ro)
   loki-sc-rules:
-    Container ID:   containerd://4cdc79562d14267191ae07bcc718dbe0efae2af4ee1c54c3ca02b48fe19e1eae
+    Container ID:   containerd://d0d9a05c050af3b459065b17a05f7bda5b499c599c9313ba02e22e5dd9916391
     Image:          docker.io/kiwigrid/k8s-sidecar:2.5.0
     Image ID:       docker.io/kiwigrid/k8s-sidecar@sha256:a6b3f707f883108376514489a94d6629109a327b2978e1d826cd104c4ca436df
     Port:           <none>
     Host Port:      <none>
     State:          Running
-      Started:      Thu, 29 Oct 2026 07:31:44 +0000
+      Started:      Thu, 29 Oct 2026 13:23:52 +0000
     Ready:          True
     Restart Count:  0
     Environment:
@@ -67,7 +67,7 @@ Containers:
     Mounts:
       /rules from sc-rules-volume (rw)
       /tmp from tmp (rw)
-      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-hs8qx (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-4jjmc (ro)
 Conditions:
   Type                        Status
   PodReadyToStartContainers   True 
@@ -96,7 +96,7 @@ Volumes:
     Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
     Medium:     
     SizeLimit:  <unset>
-  kube-api-access-hs8qx:
+  kube-api-access-4jjmc:
     Type:                    Projected (a volume that contains injected data from multiple sources)
     TokenExpirationSeconds:  3607
     ConfigMapName:           kube-root-ca.crt
@@ -109,13 +109,13 @@ Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists fo
 Events:
   Type     Reason     Age                From               Message
   ----     ------     ----               ----               -------
-  Normal   Scheduled  15m                default-scheduler  Successfully assigned monitoring/loki-0 to observability-control-plane
-  Normal   Pulling    15m                kubelet            Pulling image "docker.io/grafana/loki:3.6.11"
-  Normal   Pulled     15m                kubelet            Successfully pulled image "docker.io/grafana/loki:3.6.11" in 2.676s (2.676s including waiting). Image size: 43179679 bytes.
-  Normal   Created    15m                kubelet            Created container: loki
-  Normal   Started    15m                kubelet            Started container loki
-  Normal   Pulling    15m                kubelet            Pulling image "docker.io/kiwigrid/k8s-sidecar:2.5.0"
-  Normal   Pulled     15m                kubelet            Successfully pulled image "docker.io/kiwigrid/k8s-sidecar:2.5.0" in 2.404s (4.262s including waiting). Image size: 23422974 bytes.
-  Normal   Created    15m                kubelet            Created container: loki-sc-rules
-  Normal   Started    15m                kubelet            Started container loki-sc-rules
-  Warning  Unhealthy  15m (x2 over 15m)  kubelet            Readiness probe failed: HTTP probe failed with statuscode: 503
+  Normal   Scheduled  19m                default-scheduler  Successfully assigned monitoring/loki-0 to observability-control-plane
+  Normal   Pulling    19m                kubelet            Pulling image "docker.io/grafana/loki:3.6.11"
+  Normal   Pulled     19m                kubelet            Successfully pulled image "docker.io/grafana/loki:3.6.11" in 2.089s (3.777s including waiting). Image size: 43179679 bytes.
+  Normal   Created    19m                kubelet            Created container: loki
+  Normal   Started    19m                kubelet            Started container loki
+  Normal   Pulling    19m                kubelet            Pulling image "docker.io/kiwigrid/k8s-sidecar:2.5.0"
+  Normal   Pulled     19m                kubelet            Successfully pulled image "docker.io/kiwigrid/k8s-sidecar:2.5.0" in 1.812s (1.812s including waiting). Image size: 23422974 bytes.
+  Normal   Created    19m                kubelet            Created container: loki-sc-rules
+  Normal   Started    19m                kubelet            Started container loki-sc-rules
+  Warning  Unhealthy  19m (x2 over 19m)  kubelet            Readiness probe failed: HTTP probe failed with statuscode: 503

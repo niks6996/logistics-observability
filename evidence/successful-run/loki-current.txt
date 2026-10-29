@@ -1,192 +1,200 @@
-level=info ts=2026-10-29T07:31:40.088726163Z caller=main.go:133 msg="Starting Loki" version="(version=3.6.11, branch=release-3.6.x, revision=f7a4aa99)"
-level=info ts=2026-10-29T07:31:40.088756849Z caller=main.go:134 msg="Loading configuration file" filename=/etc/loki/config/config.yaml
-level=info ts=2026-10-29T07:31:40.091448807Z caller=server.go:386 msg="server listening on addresses" http=[::]:3100 grpc=[::]:9095
-level=info ts=2026-10-29T07:31:40.094572733Z caller=memberlist_client.go:484 msg="Using memberlist cluster label and node name" cluster_label= node=loki-0-72fa5e1c
-level=info ts=2026-10-29T07:31:40.095235199Z caller=memberlist_client.go:628 msg="memberlist fast-join starting" nodes_found=1 to_join=4
-level=info ts=2026-10-29T07:31:40.09836155Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:31:40.098642182Z caller=table_manager.go:300 index-store=tsdb-2024-04-01 msg="query readiness setup completed" duration=2.654µs distinct_users_len=0 distinct_users=
-level=info ts=2026-10-29T07:31:40.098666639Z caller=shipper.go:165 index-store=tsdb-2024-04-01 msg="starting index shipper in RW mode"
-level=info ts=2026-10-29T07:31:40.099041202Z caller=head_manager.go:313 index-store=tsdb-2024-04-01 component=tsdb-head-manager msg="loaded wals by period" groups=0
-level=info ts=2026-10-29T07:31:40.099079399Z caller=manager.go:86 index-store=tsdb-2024-04-01 component=tsdb-manager msg="loaded leftover local indices" err=null successful=true buckets=0 indices=0 failures=0
-level=info ts=2026-10-29T07:31:40.09910018Z caller=head_manager.go:313 index-store=tsdb-2024-04-01 component=tsdb-head-manager msg="loaded wals by period" groups=0
-level=info ts=2026-10-29T07:31:40.100865965Z caller=worker.go:134 component=querier msg="Starting querier worker using query-scheduler and scheduler ring for addresses"
-level=info ts=2026-10-29T07:31:40.10393564Z caller=mapper.go:48 msg="cleaning up mapped rules directory" path=/var/loki/rules-temp
-ts=2026-10-29T07:31:40.104131374Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
-level=info ts=2026-10-29T07:31:40.104143292Z caller=memberlist_client.go:634 msg="fast-joining node failed" node=loki-memberlist.monitoring.svc.cluster.local err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
-level=warn ts=2026-10-29T07:31:40.104152286Z caller=memberlist_client.go:644 msg="memberlist fast-join failed because no node has been successfully reached" elapsed_time=8.91939ms
-level=error ts=2026-10-29T07:31:40.104156913Z caller=memberlist_client.go:521 msg="failed to fast-join the memberlist cluster at startup" err="no memberlist node reached during fast-join procedure"
-level=info ts=2026-10-29T07:31:40.10416212Z caller=memberlist_client.go:666 phase=startup msg="joining memberlist cluster" join_members=loki-memberlist.monitoring.svc.cluster.local
-level=info ts=2026-10-29T07:31:40.118139976Z caller=module_service.go:82 msg=starting module=runtime-config
-level=info ts=2026-10-29T07:31:40.11818206Z caller=module_service.go:82 msg=starting module=server
-level=info ts=2026-10-29T07:31:40.1182022Z caller=module_service.go:82 msg=starting module=cache-generation-loader
-level=info ts=2026-10-29T07:31:40.118226877Z caller=module_service.go:82 msg=starting module=memberlist-kv
-level=info ts=2026-10-29T07:31:40.118336872Z caller=module_service.go:82 msg=starting module=query-scheduler-ring
-level=info ts=2026-10-29T07:31:40.11835534Z caller=module_service.go:82 msg=starting module=store
-level=info ts=2026-10-29T07:31:40.118361118Z caller=module_service.go:82 msg=starting module=ring
-level=info ts=2026-10-29T07:31:40.118368364Z caller=module_service.go:82 msg=starting module=query-frontend-tripperware
-level=info ts=2026-10-29T07:31:40.118391174Z caller=ring.go:365 msg="ring doesn't exist in KV store yet"
-level=info ts=2026-10-29T07:31:40.118378906Z caller=basic_lifecycler.go:321 msg="instance not found in the ring" instance=loki-0 ring=scheduler
-level=info ts=2026-10-29T07:31:40.118404073Z caller=basic_lifecycler_delegates.go:63 msg="not loading tokens from file, tokens file path is empty"
-level=info ts=2026-10-29T07:31:40.118409231Z caller=ring.go:365 msg="ring doesn't exist in KV store yet"
-level=info ts=2026-10-29T07:31:40.118429712Z caller=module_service.go:82 msg=starting module=ingester-querier
-level=info ts=2026-10-29T07:31:40.118449371Z caller=module_service.go:82 msg=starting module=analytics
-level=info ts=2026-10-29T07:31:40.1184917Z caller=module_service.go:82 msg=starting module=compactor
-level=info ts=2026-10-29T07:31:40.118494259Z caller=module_service.go:82 msg=starting module=distributor
-level=info ts=2026-10-29T07:31:40.118499577Z caller=module_service.go:82 msg=starting module=rule-evaluator
-level=info ts=2026-10-29T07:31:40.118519366Z caller=module_service.go:82 msg=starting module=ruler
-level=info ts=2026-10-29T07:31:40.118524209Z caller=ring.go:365 msg="ring doesn't exist in KV store yet"
-level=info ts=2026-10-29T07:31:40.118530062Z caller=ruler.go:536 msg="ruler up and running"
-level=error ts=2026-10-29T07:31:40.118533888Z caller=ratestore.go:110 msg="error getting ingester clients" err="empty ring"
-level=info ts=2026-10-29T07:31:40.118543548Z caller=basic_lifecycler.go:321 msg="instance not found in the ring" instance=loki-0 ring=compactor
-level=info ts=2026-10-29T07:31:40.118555115Z caller=basic_lifecycler_delegates.go:63 msg="not loading tokens from file, tokens file path is empty"
-level=info ts=2026-10-29T07:31:40.118560128Z caller=module_service.go:82 msg=starting module=ingester
-level=info ts=2026-10-29T07:31:40.118575661Z caller=ingester.go:565 component=ingester msg="recovering from checkpoint"
-level=info ts=2026-10-29T07:31:40.118590323Z caller=basic_lifecycler.go:321 component=distributor msg="instance not found in the ring" instance=loki-0 ring=distributor
-level=info ts=2026-10-29T07:31:40.118604785Z caller=recovery.go:42 component=ingester msg="no checkpoint found, treating as no-op"
-level=info ts=2026-10-29T07:31:40.118672321Z caller=compactor.go:383 msg="waiting until compactor is JOINING in the ring"
-level=info ts=2026-10-29T07:31:40.118676202Z caller=ingester.go:581 component=ingester msg="recovered WAL checkpoint recovery finished" elapsed=101.492µs errors=false
-level=info ts=2026-10-29T07:31:40.118673228Z caller=ringmanager.go:186 msg="waiting until scheduler is JOINING in the ring"
-level=info ts=2026-10-29T07:31:40.118684159Z caller=compactor.go:387 msg="compactor is JOINING in the ring"
-level=info ts=2026-10-29T07:31:40.118684184Z caller=ingester.go:587 component=ingester msg="recovering from WAL"
-level=info ts=2026-10-29T07:31:40.118687309Z caller=ringmanager.go:190 msg="scheduler is JOINING in the ring"
-level=info ts=2026-10-29T07:31:40.118737204Z caller=ingester.go:603 component=ingester msg="WAL segment recovery finished" elapsed=162.844µs errors=false
-level=info ts=2026-10-29T07:31:40.118741781Z caller=ingester.go:551 component=ingester msg="closing recoverer"
-level=info ts=2026-10-29T07:31:40.118745326Z caller=ingester.go:559 component=ingester msg="WAL recovery finished" time=170.806µs
-level=info ts=2026-10-29T07:31:40.118852928Z caller=wal.go:158 msg=started component=wal
-level=info ts=2026-10-29T07:31:40.118872007Z caller=lifecycler.go:687 component=ingester msg="not loading tokens from file, tokens file path is empty"
-level=info ts=2026-10-29T07:31:40.118889913Z caller=lifecycler.go:714 component=ingester msg="instance not found in ring, adding with no tokens" ring=ingester
-level=info ts=2026-10-29T07:31:40.118889813Z caller=ingester.go:772 component=ingester msg="sleeping for initial delay before starting periodic flushing" delay=6.072442388s
-level=info ts=2026-10-29T07:31:40.118930735Z caller=lifecycler.go:556 component=ingester msg="auto-joining cluster after timeout" ring=ingester
-ts=2026-10-29T07:31:40.121613218Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
-level=warn ts=2026-10-29T07:31:40.121625787Z caller=memberlist_client.go:700 phase=startup msg="joining memberlist cluster" attempts=1 max_attempts=10 err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
-level=info ts=2026-10-29T07:31:41.119376541Z caller=ringmanager.go:199 msg="waiting until scheduler is ACTIVE in the ring"
-level=info ts=2026-10-29T07:31:41.119430402Z caller=compactor.go:397 msg="waiting until compactor is ACTIVE in the ring"
-level=info ts=2026-10-29T07:31:41.119446747Z caller=compactor.go:401 msg="compactor is ACTIVE in the ring"
-level=info ts=2026-10-29T07:31:41.248341178Z caller=ringmanager.go:203 msg="scheduler is ACTIVE in the ring"
-level=info ts=2026-10-29T07:31:41.248411028Z caller=module_service.go:82 msg=starting module=query-scheduler
-level=info ts=2026-10-29T07:31:41.248506336Z caller=module_service.go:82 msg=starting module=query-frontend
-level=info ts=2026-10-29T07:31:41.24854892Z caller=module_service.go:82 msg=starting module=querier
-level=info ts=2026-10-29T07:31:41.248586076Z caller=loki.go:599 msg="Loki started" startup_time=1.214374911s
-ts=2026-10-29T07:31:41.390542416Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
-level=warn ts=2026-10-29T07:31:41.390567774Z caller=memberlist_client.go:700 phase=startup msg="joining memberlist cluster" attempts=2 max_attempts=10 err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
-level=info ts=2026-10-29T07:31:44.249022023Z caller=scheduler.go:652 msg="this scheduler is in the ReplicationSet, will now accept requests."
-level=info ts=2026-10-29T07:31:44.249048593Z caller=worker.go:235 component=querier msg="adding connection" addr=10.244.0.13:9095
-ts=2026-10-29T07:31:44.601971951Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
-level=warn ts=2026-10-29T07:31:44.602001606Z caller=memberlist_client.go:700 phase=startup msg="joining memberlist cluster" attempts=3 max_attempts=10 err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
-level=info ts=2026-10-29T07:31:46.119496093Z caller=compactor.go:460 msg="this instance has been chosen to run the compactor, starting compactor"
-level=info ts=2026-10-29T07:31:46.119565147Z caller=tables_manager.go:70 msg="waiting 10m0s for ring to stay stable and previous compactions to finish before starting compactor"
-ts=2026-10-29T07:31:50.763735288Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
-level=warn ts=2026-10-29T07:31:50.763765714Z caller=memberlist_client.go:700 phase=startup msg="joining memberlist cluster" attempts=4 max_attempts=10 err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
-level=info ts=2026-10-29T07:31:51.249307233Z caller=frontend_scheduler_worker.go:106 msg="adding connection to scheduler" addr=10.244.0.13:9095
-ts=2026-10-29T07:32:01.538967888Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
-level=warn ts=2026-10-29T07:32:01.538994338Z caller=memberlist_client.go:700 phase=startup msg="joining memberlist cluster" attempts=5 max_attempts=10 err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
-level=info ts=2026-10-29T07:32:10.119455234Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:32:10.11949902Z caller=recalculate_owned_streams.go:63 msg="detected ring changes, re-evaluating streams ownership"
-level=info ts=2026-10-29T07:32:10.1195055Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:32:20.710769923Z caller=memberlist_client.go:673 phase=startup msg="joining memberlist cluster succeeded" reached_nodes=1 elapsed_time=40.606603907s
-level=info ts=2026-10-29T07:32:40.098975315Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:32:40.11994292Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:32:40.119988308Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:33:10.119244729Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:33:10.119287373Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:33:40.098745615Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:33:40.119397724Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:33:40.119429401Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:33:43.56736285Z caller=roundtrip.go:415 org_id=fake msg="executing query" type=range query="{app=\"logistics-api\"} | json" start=2026-10-29T06:33:43.567214276Z end=2026-10-29T07:33:43.567214276Z start_delta=1h0m0.000143426s end_delta=143.566µs length=1h0m0s step=14000 query_hash=1980394197
-level=info ts=2026-10-29T07:33:43.56827142Z caller=table_manager.go:195 index-store=tsdb-2024-04-01 msg="get or create table" found=false table=index_20755 wait_for_lock=921ns
-level=info ts=2026-10-29T07:33:43.568291621Z caller=table_manager.go:205 index-store=tsdb-2024-04-01 msg="downloading all files for table" table=index_20755
-ts=2026-10-29T07:33:43.568516805Z caller=spanlogger.go:152 table-name=index_20755 user=fake level=info msg="init index set" duration=116.976µs success=true
-ts=2026-10-29T07:33:43.56851713Z caller=spanlogger.go:152 table-name=index_20755 user-id=fake user=fake level=info msg="init index set" duration=77.387µs success=true
-ts=2026-10-29T07:33:43.568535453Z caller=spanlogger.go:152 table-name=index_20755 user=fake level=info msg="downloaded index set at query time" duration=116.976µs
-ts=2026-10-29T07:33:43.568541622Z caller=spanlogger.go:152 table-name=index_20755 user-id=fake user=fake level=info msg="downloaded index set at query time" duration=77.387µs
-level=info ts=2026-10-29T07:33:43.569166947Z caller=metrics.go:409 org_id=fake latency=fast query_type=stats start=2026-10-29T07:29:30Z end=2026-10-29T07:33:43Z start_delta=4m13.569165104s end_delta=569.165244ms length=4m13s duration=1.028496ms status=200 query="{app=\"logistics-api\"}" query_hash=3051209229 total_entries=1
-level=info ts=2026-10-29T07:33:43.570811354Z caller=engine.go:274 component=querier org_id=fake msg="executing query" query="{app=\"logistics-api\"} | json" query_hash=1980394197 type=range length=3m43.567214276s step=14s
-level=info ts=2026-10-29T07:33:43.575236041Z caller=table_manager.go:195 index-store=tsdb-2024-04-01 msg="get or create table" found=true table=index_20755 wait_for_lock=591ns
-level=info ts=2026-10-29T07:33:43.575615116Z caller=metrics.go:237 component=querier org_id=fake latency=fast query="{app=\"logistics-api\"} | json" query_hash=1980394197 query_type=limited range_type=range length=3m43.567214276s start_delta=3m43.575604891s end_delta=8.390725ms step=14s duration=4.764172ms status=200 limit=10 returned_lines=10 throughput=26MB total_bytes=121kB total_bytes_structured_metadata=4.6kB lines_per_second=121112 total_lines=577 post_filter_lines=577 total_entries=10 store_chunks_download_time=0s queue_time=258.508µs splits=0 shards=0 query_referenced_structured_metadata=false pipeline_wrapper_filtered_lines=0 chunk_refs_fetch_time=114.718µs cache_chunk_req=0 cache_chunk_hit=0 cache_chunk_bytes_stored=0 cache_chunk_bytes_fetched=0 cache_chunk_download_time=0s cache_index_req=0 cache_index_hit=0 cache_index_download_time=0s cache_stats_results_req=0 cache_stats_results_hit=0 cache_stats_results_download_time=0s cache_volume_results_req=0 cache_volume_results_hit=0 cache_volume_results_download_time=0s cache_result_req=0 cache_result_hit=0 cache_result_download_time=0s cache_result_query_length_served=0s cardinality_estimate=0 ingester_chunk_refs=0 ingester_chunk_downloaded=0 ingester_chunk_matches=1 ingester_requests=1 ingester_chunk_head_bytes=121kB ingester_chunk_compressed_bytes=0B ingester_chunk_decompressed_bytes=0B ingester_post_filter_lines=577 congestion_control_latency=0s index_total_chunks=0 index_post_bloom_filter_chunks=0 index_bloom_filter_ratio=0.00 index_used_bloom_filters=false index_shard_resolver_duration=0s disable_pipeline_wrappers=false has_labelfilter_before_parser=false
-ts=2026-10-29T07:33:43.576931014Z caller=spanlogger.go:152 middleware=QueryShard.astMapperware org_id=fake user=fake level=warn msg="failed mapping AST" err="context canceled" query="{app=\"logistics-api\"} | json"
-level=info ts=2026-10-29T07:33:43.577123138Z caller=metrics.go:237 component=frontend org_id=fake latency=fast query="{app=\"logistics-api\"} | json" query_hash=1980394197 query_type=limited range_type=range length=1h0m0s start_delta=1h0m0.009898586s end_delta=9.898696ms step=14s duration=9.502911ms status=200 limit=10 returned_lines=0 throughput=13MB total_bytes=121kB total_bytes_structured_metadata=4.6kB lines_per_second=60718 total_lines=577 post_filter_lines=577 total_entries=10 store_chunks_download_time=0s queue_time=259µs splits=1 shards=1 query_referenced_structured_metadata=false pipeline_wrapper_filtered_lines=0 chunk_refs_fetch_time=114.718µs cache_chunk_req=0 cache_chunk_hit=0 cache_chunk_bytes_stored=0 cache_chunk_bytes_fetched=0 cache_chunk_download_time=0s cache_index_req=0 cache_index_hit=0 cache_index_download_time=0s cache_stats_results_req=0 cache_stats_results_hit=0 cache_stats_results_download_time=0s cache_volume_results_req=0 cache_volume_results_hit=0 cache_volume_results_download_time=0s cache_result_req=0 cache_result_hit=0 cache_result_download_time=0s cache_result_query_length_served=0s cardinality_estimate=0 ingester_chunk_refs=0 ingester_chunk_downloaded=0 ingester_chunk_matches=1 ingester_requests=1 ingester_chunk_head_bytes=121kB ingester_chunk_compressed_bytes=0B ingester_chunk_decompressed_bytes=0B ingester_post_filter_lines=577 congestion_control_latency=0s index_total_chunks=0 index_post_bloom_filter_chunks=0 index_bloom_filter_ratio=0.00 index_used_bloom_filters=false index_shard_resolver_duration=0s disable_pipeline_wrappers=false has_labelfilter_before_parser=false
-level=info ts=2026-10-29T07:34:10.119181404Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:34:10.119230969Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:34:40.098746521Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:34:40.119175904Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:34:40.119207691Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:35:10.118983864Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:35:10.119023263Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:35:40.098448886Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:35:40.118981039Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:35:40.119007789Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:36:10.119583925Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:36:10.119625547Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:36:40.098552109Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:36:40.099637116Z caller=table_manager.go:239 index-store=tsdb-2024-04-01 msg="syncing tables"
-level=info ts=2026-10-29T07:36:40.099733711Z caller=table_manager.go:300 index-store=tsdb-2024-04-01 msg="query readiness setup completed" duration=2.374µs distinct_users_len=0 distinct_users=
-level=info ts=2026-10-29T07:36:40.118974381Z caller=checkpoint.go:612 msg="starting checkpoint"
-level=info ts=2026-10-29T07:36:40.119092564Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:36:40.119113135Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:36:40.119143155Z caller=checkpoint.go:337 msg="attempting checkpoint for" dir=/var/loki/wal/checkpoint.000000
-level=info ts=2026-10-29T07:37:10.118986303Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:37:10.11902422Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:37:40.09844816Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:37:40.11898814Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:37:40.119018616Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:38:10.119470563Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:38:10.11952182Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:38:40.099080589Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:38:40.119483464Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:38:40.119511366Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:39:10.119395542Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:39:10.119439228Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:39:40.099366667Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:39:40.118998397Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:39:40.119021581Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:40:10.119439849Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:40:10.119487681Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:40:40.09906317Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:40:40.119452349Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:40:40.119486901Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:41:10.118989427Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:41:10.119028916Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:41:10.121322068Z caller=checkpoint.go:499 msg="atomic checkpoint finished" old=/var/loki/wal/checkpoint.000000.tmp new=/var/loki/wal/checkpoint.000000
-level=info ts=2026-10-29T07:41:10.121811955Z caller=checkpoint.go:570 msg="checkpoint done" time=4m30.002471193s
-level=info ts=2026-10-29T07:41:40.098976463Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:41:40.098969193Z caller=table_manager.go:239 index-store=tsdb-2024-04-01 msg="syncing tables"
-level=info ts=2026-10-29T07:41:40.09907351Z caller=table_manager.go:300 index-store=tsdb-2024-04-01 msg="query readiness setup completed" duration=2.324µs distinct_users_len=0 distinct_users=
-level=info ts=2026-10-29T07:41:40.119342657Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:41:40.119369587Z caller=checkpoint.go:612 msg="starting checkpoint"
-level=info ts=2026-10-29T07:41:40.11937738Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:41:40.11954448Z caller=checkpoint.go:337 msg="attempting checkpoint for" dir=/var/loki/wal/checkpoint.000001
-level=info ts=2026-10-29T07:41:46.119676547Z caller=tables_manager.go:76 msg="compactor startup delay completed"
-level=info ts=2026-10-29T07:41:46.119801224Z caller=tables_manager.go:145 msg="compactor started"
-level=info ts=2026-10-29T07:42:10.119442339Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:42:10.119483781Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:42:40.098551554Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:42:40.119005089Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:42:40.119034603Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:43:10.118990103Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:43:10.119027238Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:43:40.098488066Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:43:40.118984132Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:43:40.119007967Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:44:10.118979429Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:44:10.119009504Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:44:40.099029317Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:44:40.119372103Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:44:40.119407196Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:45:10.119667704Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:45:10.119705281Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:45:40.099164705Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:45:40.119666724Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:45:40.119694455Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:46:10.118988281Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:46:10.119023955Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:46:10.121115524Z caller=checkpoint.go:499 msg="atomic checkpoint finished" old=/var/loki/wal/checkpoint.000001.tmp new=/var/loki/wal/checkpoint.000001
-level=info ts=2026-10-29T07:46:10.121805261Z caller=checkpoint.go:570 msg="checkpoint done" time=4m30.002108832s
-level=info ts=2026-10-29T07:46:40.099155319Z caller=table_manager.go:239 index-store=tsdb-2024-04-01 msg="syncing tables"
-level=info ts=2026-10-29T07:46:40.099167437Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
-level=info ts=2026-10-29T07:46:40.099252225Z caller=table_manager.go:300 index-store=tsdb-2024-04-01 msg="query readiness setup completed" duration=2.524µs distinct_users_len=0 distinct_users=
-level=info ts=2026-10-29T07:46:40.119649336Z caller=checkpoint.go:612 msg="starting checkpoint"
-level=info ts=2026-10-29T07:46:40.119686411Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:46:40.119706832Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
-level=info ts=2026-10-29T07:46:40.119801845Z caller=checkpoint.go:337 msg="attempting checkpoint for" dir=/var/loki/wal/checkpoint.000002
-level=info ts=2026-10-29T07:47:10.119623452Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
-level=info ts=2026-10-29T07:47:10.119667338Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:23:50.368309081Z caller=module_service.go:82 msg=starting module=runtime-config
+level=info ts=2026-10-29T13:23:50.368323653Z caller=module_service.go:82 msg=starting module=memberlist-kv
+level=info ts=2026-10-29T13:23:50.368452668Z caller=module_service.go:82 msg=starting module=query-scheduler-ring
+level=info ts=2026-10-29T13:23:50.368483715Z caller=module_service.go:82 msg=starting module=ring
+level=info ts=2026-10-29T13:23:50.36849023Z caller=module_service.go:82 msg=starting module=store
+level=info ts=2026-10-29T13:23:50.368496469Z caller=module_service.go:82 msg=starting module=query-frontend-tripperware
+ts=2026-10-29T13:23:50.372759313Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
+level=info ts=2026-10-29T13:23:50.372773855Z caller=memberlist_client.go:634 msg="fast-joining node failed" node=loki-memberlist.monitoring.svc.cluster.local err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
+level=warn ts=2026-10-29T13:23:50.372786954Z caller=memberlist_client.go:644 msg="memberlist fast-join failed because no node has been successfully reached" elapsed_time=19.924222ms
+level=error ts=2026-10-29T13:23:50.37279074Z caller=memberlist_client.go:521 msg="failed to fast-join the memberlist cluster at startup" err="no memberlist node reached during fast-join procedure"
+level=info ts=2026-10-29T13:23:50.372801166Z caller=memberlist_client.go:666 phase=startup msg="joining memberlist cluster" join_members=loki-memberlist.monitoring.svc.cluster.local
+level=info ts=2026-10-29T13:23:50.372820479Z caller=ring.go:365 msg="ring doesn't exist in KV store yet"
+level=info ts=2026-10-29T13:23:50.372845978Z caller=module_service.go:82 msg=starting module=ingester-querier
+level=info ts=2026-10-29T13:23:50.372844045Z caller=ring.go:365 msg="ring doesn't exist in KV store yet"
+level=info ts=2026-10-29T13:23:50.372824029Z caller=basic_lifecycler.go:321 msg="instance not found in the ring" instance=loki-0 ring=scheduler
+level=info ts=2026-10-29T13:23:50.372856408Z caller=basic_lifecycler_delegates.go:63 msg="not loading tokens from file, tokens file path is empty"
+level=info ts=2026-10-29T13:23:50.372861391Z caller=module_service.go:82 msg=starting module=analytics
+level=info ts=2026-10-29T13:23:50.372895893Z caller=module_service.go:82 msg=starting module=distributor
+level=error ts=2026-10-29T13:23:50.372923054Z caller=ratestore.go:110 msg="error getting ingester clients" err="empty ring"
+level=info ts=2026-10-29T13:23:50.372962023Z caller=module_service.go:82 msg=starting module=rule-evaluator
+level=info ts=2026-10-29T13:23:50.372980591Z caller=module_service.go:82 msg=starting module=compactor
+level=info ts=2026-10-29T13:23:50.372990556Z caller=module_service.go:82 msg=starting module=ingester
+level=info ts=2026-10-29T13:23:50.373002624Z caller=ring.go:365 msg="ring doesn't exist in KV store yet"
+level=info ts=2026-10-29T13:23:50.373001803Z caller=ingester.go:565 component=ingester msg="recovering from checkpoint"
+level=info ts=2026-10-29T13:23:50.373020531Z caller=ring.go:365 component=distributor msg="ring doesn't exist in KV store yet"
+level=info ts=2026-10-29T13:23:50.373039149Z caller=module_service.go:82 msg=starting module=ruler
+level=info ts=2026-10-29T13:23:50.373052589Z caller=ruler.go:536 msg="ruler up and running"
+level=info ts=2026-10-29T13:23:50.373061093Z caller=ringmanager.go:186 msg="waiting until scheduler is JOINING in the ring"
+level=info ts=2026-10-29T13:23:50.373071463Z caller=ringmanager.go:190 msg="scheduler is JOINING in the ring"
+level=info ts=2026-10-29T13:23:50.373074643Z caller=basic_lifecycler.go:321 component=distributor msg="instance not found in the ring" instance=loki-0 ring=distributor
+level=info ts=2026-10-29T13:23:50.373092219Z caller=basic_lifecycler.go:321 msg="instance not found in the ring" instance=loki-0 ring=compactor
+level=info ts=2026-10-29T13:23:50.373098759Z caller=basic_lifecycler_delegates.go:63 msg="not loading tokens from file, tokens file path is empty"
+level=info ts=2026-10-29T13:23:50.373154448Z caller=compactor.go:383 msg="waiting until compactor is JOINING in the ring"
+level=info ts=2026-10-29T13:23:50.373159105Z caller=compactor.go:387 msg="compactor is JOINING in the ring"
+level=info ts=2026-10-29T13:23:50.373031378Z caller=recovery.go:42 component=ingester msg="no checkpoint found, treating as no-op"
+level=info ts=2026-10-29T13:23:50.373468632Z caller=ingester.go:581 component=ingester msg="recovered WAL checkpoint recovery finished" elapsed=467.859µs errors=false
+level=info ts=2026-10-29T13:23:50.373475111Z caller=ingester.go:587 component=ingester msg="recovering from WAL"
+level=info ts=2026-10-29T13:23:50.373571677Z caller=ingester.go:603 component=ingester msg="WAL segment recovery finished" elapsed=567.51µs errors=false
+level=info ts=2026-10-29T13:23:50.373595373Z caller=ingester.go:551 component=ingester msg="closing recoverer"
+level=info ts=2026-10-29T13:23:50.3736003Z caller=ingester.go:559 component=ingester msg="WAL recovery finished" time=599.398µs
+level=info ts=2026-10-29T13:23:50.373622394Z caller=wal.go:158 msg=started component=wal
+level=info ts=2026-10-29T13:23:50.373689384Z caller=lifecycler.go:687 component=ingester msg="not loading tokens from file, tokens file path is empty"
+level=info ts=2026-10-29T13:23:50.373692019Z caller=ingester.go:772 component=ingester msg="sleeping for initial delay before starting periodic flushing" delay=2.840176366s
+level=info ts=2026-10-29T13:23:50.373710837Z caller=lifecycler.go:714 component=ingester msg="instance not found in ring, adding with no tokens" ring=ingester
+level=info ts=2026-10-29T13:23:50.373755124Z caller=lifecycler.go:556 component=ingester msg="auto-joining cluster after timeout" ring=ingester
+ts=2026-10-29T13:23:50.392618285Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
+level=warn ts=2026-10-29T13:23:50.392627279Z caller=memberlist_client.go:700 phase=startup msg="joining memberlist cluster" attempts=1 max_attempts=10 err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
+level=info ts=2026-10-29T13:23:51.373390055Z caller=compactor.go:397 msg="waiting until compactor is ACTIVE in the ring"
+level=info ts=2026-10-29T13:23:51.373416354Z caller=compactor.go:401 msg="compactor is ACTIVE in the ring"
+level=info ts=2026-10-29T13:23:51.373414317Z caller=ringmanager.go:199 msg="waiting until scheduler is ACTIVE in the ring"
+ts=2026-10-29T13:23:51.558010432Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
+level=warn ts=2026-10-29T13:23:51.558037743Z caller=memberlist_client.go:700 phase=startup msg="joining memberlist cluster" attempts=2 max_attempts=10 err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
+level=info ts=2026-10-29T13:23:51.563163528Z caller=ringmanager.go:203 msg="scheduler is ACTIVE in the ring"
+level=info ts=2026-10-29T13:23:51.563202497Z caller=module_service.go:82 msg=starting module=query-scheduler
+level=info ts=2026-10-29T13:23:51.563253013Z caller=module_service.go:82 msg=starting module=querier
+level=info ts=2026-10-29T13:23:51.563293153Z caller=module_service.go:82 msg=starting module=query-frontend
+level=info ts=2026-10-29T13:23:51.563334797Z caller=loki.go:599 msg="Loki started" startup_time=1.253479087s
+level=info ts=2026-10-29T13:23:54.563879707Z caller=scheduler.go:652 msg="this scheduler is in the ReplicationSet, will now accept requests."
+level=info ts=2026-10-29T13:23:54.563903387Z caller=worker.go:235 component=querier msg="adding connection" addr=10.244.0.13:9095
+ts=2026-10-29T13:23:55.198750814Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
+level=warn ts=2026-10-29T13:23:55.198766598Z caller=memberlist_client.go:700 phase=startup msg="joining memberlist cluster" attempts=3 max_attempts=10 err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
+level=info ts=2026-10-29T13:23:56.373948082Z caller=compactor.go:460 msg="this instance has been chosen to run the compactor, starting compactor"
+level=info ts=2026-10-29T13:23:56.373995984Z caller=tables_manager.go:70 msg="waiting 10m0s for ring to stay stable and previous compactions to finish before starting compactor"
+level=info ts=2026-10-29T13:24:01.563592099Z caller=frontend_scheduler_worker.go:106 msg="adding connection to scheduler" addr=10.244.0.13:9095
+ts=2026-10-29T13:24:02.3323744Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
+level=warn ts=2026-10-29T13:24:02.332437005Z caller=memberlist_client.go:700 phase=startup msg="joining memberlist cluster" attempts=4 max_attempts=10 err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
+ts=2026-10-29T13:24:15.684939804Z caller=memberlist_logger.go:74 level=warn msg="Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host"
+level=warn ts=2026-10-29T13:24:15.68496342Z caller=memberlist_client.go:700 phase=startup msg="joining memberlist cluster" attempts=5 max_attempts=10 err="1 error occurred:\n\t* Failed to resolve loki-memberlist.monitoring.svc.cluster.local: lookup loki-memberlist.monitoring.svc.cluster.local on 10.96.0.10:53: no such host\n\n"
+level=info ts=2026-10-29T13:24:20.374682962Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:24:20.374709461Z caller=recalculate_owned_streams.go:63 msg="detected ring changes, re-evaluating streams ownership"
+level=info ts=2026-10-29T13:24:20.374720728Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:24:40.332304134Z caller=memberlist_client.go:673 phase=startup msg="joining memberlist cluster succeeded" reached_nodes=1 elapsed_time=49.959499062s
+level=info ts=2026-10-29T13:24:50.354415031Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:24:50.373807208Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:24:50.373830423Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:25:20.373768899Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:25:20.373814047Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:25:50.354409462Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:25:50.373886357Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:25:50.37392217Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:26:00.679107215Z caller=roundtrip.go:415 org_id=fake msg="executing query" type=range query="{app=\"logistics-api\"} | json" start=2026-10-29T12:26:00.678986744Z end=2026-10-29T13:26:00.678986744Z start_delta=1h0m0.000114823s end_delta=115.003µs length=1h0m0s step=14000 query_hash=1980394197
+level=info ts=2026-10-29T13:26:00.680017697Z caller=table_manager.go:195 index-store=tsdb-2024-04-01 msg="get or create table" found=false table=index_20755 wait_for_lock=731ns
+level=info ts=2026-10-29T13:26:00.680037096Z caller=table_manager.go:205 index-store=tsdb-2024-04-01 msg="downloading all files for table" table=index_20755
+ts=2026-10-29T13:26:00.680265769Z caller=spanlogger.go:152 table-name=index_20755 user-id=fake user=fake level=info msg="init index set" duration=67.742µs success=true
+ts=2026-10-29T13:26:00.680274193Z caller=spanlogger.go:152 table-name=index_20755 user=fake level=info msg="init index set" duration=127.953µs success=true
+ts=2026-10-29T13:26:00.680281944Z caller=spanlogger.go:152 table-name=index_20755 user-id=fake user=fake level=info msg="downloaded index set at query time" duration=67.742µs
+ts=2026-10-29T13:26:00.680288444Z caller=spanlogger.go:152 table-name=index_20755 user=fake level=info msg="downloaded index set at query time" duration=127.953µs
+level=info ts=2026-10-29T13:26:00.680766444Z caller=metrics.go:409 org_id=fake latency=fast query_type=stats start=2026-10-29T13:14:30Z end=2026-10-29T13:26:00Z start_delta=11m30.680764831s end_delta=680.764982ms length=11m30s duration=878.432µs status=200 query="{app=\"logistics-api\"}" query_hash=3051209229 total_entries=1
+level=info ts=2026-10-29T13:26:00.682148805Z caller=engine.go:274 component=querier org_id=fake msg="executing query" query="{app=\"logistics-api\"} | json" query_hash=1980394197 type=range length=11m0.678986744s step=14s
+level=info ts=2026-10-29T13:26:00.685693977Z caller=table_manager.go:195 index-store=tsdb-2024-04-01 msg="get or create table" found=true table=index_20755 wait_for_lock=861ns
+level=info ts=2026-10-29T13:26:00.685990122Z caller=metrics.go:237 component=querier org_id=fake latency=fast query="{app=\"logistics-api\"} | json" query_hash=1980394197 query_type=limited range_type=range length=11m0.678986744s start_delta=11m0.685980618s end_delta=6.993994ms step=14s duration=3.805383ms status=200 limit=10 returned_lines=10 throughput=32MB total_bytes=121kB total_bytes_structured_metadata=4.6kB lines_per_second=151627 total_lines=577 post_filter_lines=577 total_entries=10 store_chunks_download_time=0s queue_time=213.481µs splits=0 shards=0 query_referenced_structured_metadata=false pipeline_wrapper_filtered_lines=0 chunk_refs_fetch_time=94.557µs cache_chunk_req=0 cache_chunk_hit=0 cache_chunk_bytes_stored=0 cache_chunk_bytes_fetched=0 cache_chunk_download_time=0s cache_index_req=0 cache_index_hit=0 cache_index_download_time=0s cache_stats_results_req=0 cache_stats_results_hit=0 cache_stats_results_download_time=0s cache_volume_results_req=0 cache_volume_results_hit=0 cache_volume_results_download_time=0s cache_result_req=0 cache_result_hit=0 cache_result_download_time=0s cache_result_query_length_served=0s cardinality_estimate=0 ingester_chunk_refs=0 ingester_chunk_downloaded=0 ingester_chunk_matches=1 ingester_requests=1 ingester_chunk_head_bytes=121kB ingester_chunk_compressed_bytes=0B ingester_chunk_decompressed_bytes=0B ingester_post_filter_lines=577 congestion_control_latency=0s index_total_chunks=0 index_post_bloom_filter_chunks=0 index_bloom_filter_ratio=0.00 index_used_bloom_filters=false index_shard_resolver_duration=0s disable_pipeline_wrappers=false has_labelfilter_before_parser=false
+ts=2026-10-29T13:26:00.687128527Z caller=spanlogger.go:152 middleware=QueryShard.astMapperware org_id=fake user=fake level=warn msg="failed mapping AST" err="context canceled" query="{app=\"logistics-api\"} | json"
+level=info ts=2026-10-29T13:26:00.687289944Z caller=metrics.go:237 component=frontend org_id=fake latency=fast query="{app=\"logistics-api\"} | json" query_hash=1980394197 query_type=limited range_type=range length=1h0m0s start_delta=1h0m0.008295178s end_delta=8.295298ms step=14s duration=7.93749ms status=200 limit=10 returned_lines=0 throughput=15MB total_bytes=121kB total_bytes_structured_metadata=4.6kB lines_per_second=72693 total_lines=577 post_filter_lines=577 total_entries=10 store_chunks_download_time=0s queue_time=213µs splits=1 shards=1 query_referenced_structured_metadata=false pipeline_wrapper_filtered_lines=0 chunk_refs_fetch_time=94.557µs cache_chunk_req=0 cache_chunk_hit=0 cache_chunk_bytes_stored=0 cache_chunk_bytes_fetched=0 cache_chunk_download_time=0s cache_index_req=0 cache_index_hit=0 cache_index_download_time=0s cache_stats_results_req=0 cache_stats_results_hit=0 cache_stats_results_download_time=0s cache_volume_results_req=0 cache_volume_results_hit=0 cache_volume_results_download_time=0s cache_result_req=0 cache_result_hit=0 cache_result_download_time=0s cache_result_query_length_served=0s cardinality_estimate=0 ingester_chunk_refs=0 ingester_chunk_downloaded=0 ingester_chunk_matches=1 ingester_requests=1 ingester_chunk_head_bytes=121kB ingester_chunk_compressed_bytes=0B ingester_chunk_decompressed_bytes=0B ingester_post_filter_lines=577 congestion_control_latency=0s index_total_chunks=0 index_post_bloom_filter_chunks=0 index_bloom_filter_ratio=0.00 index_used_bloom_filters=false index_shard_resolver_duration=0s disable_pipeline_wrappers=false has_labelfilter_before_parser=false
+level=info ts=2026-10-29T13:26:20.374012788Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:26:20.374058176Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:26:50.354215244Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:26:50.37374212Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:26:50.37377544Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:27:20.373748498Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:27:20.373794658Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:27:50.354293926Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:27:50.37406426Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:27:50.37409117Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:28:20.373803461Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:28:20.373846015Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:28:50.353923251Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:28:50.35391033Z caller=table_manager.go:239 index-store=tsdb-2024-04-01 msg="syncing tables"
+level=info ts=2026-10-29T13:28:50.354070671Z caller=table_manager.go:300 index-store=tsdb-2024-04-01 msg="query readiness setup completed" duration=4.727µs distinct_users_len=0 distinct_users=
+level=info ts=2026-10-29T13:28:50.373837257Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:28:50.373866446Z caller=checkpoint.go:612 msg="starting checkpoint"
+level=info ts=2026-10-29T13:28:50.37387954Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:28:50.37406237Z caller=checkpoint.go:337 msg="attempting checkpoint for" dir=/var/loki/wal/checkpoint.000000
+level=info ts=2026-10-29T13:29:20.374790016Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:29:20.374842014Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:29:50.354374398Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:29:50.374684325Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:29:50.374721541Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:30:20.373974795Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:30:20.374024279Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:30:50.35397984Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:30:50.373934636Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:30:50.373965322Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:31:20.374794774Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:31:20.374834203Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:31:50.353709953Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:31:50.373805585Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:31:50.373835179Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:32:20.374792278Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:32:20.374830646Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:32:50.354299978Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:32:50.374508251Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:32:50.374542358Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:33:20.374612478Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:33:20.374650285Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:33:20.375473678Z caller=checkpoint.go:499 msg="atomic checkpoint finished" old=/var/loki/wal/checkpoint.000000.tmp new=/var/loki/wal/checkpoint.000000
+level=info ts=2026-10-29T13:33:20.37591417Z caller=checkpoint.go:570 msg="checkpoint done" time=4m30.00165893s
+level=info ts=2026-10-29T13:33:50.353396925Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:33:50.354494874Z caller=table_manager.go:239 index-store=tsdb-2024-04-01 msg="syncing tables"
+level=info ts=2026-10-29T13:33:50.354597468Z caller=table_manager.go:300 index-store=tsdb-2024-04-01 msg="query readiness setup completed" duration=2.834µs distinct_users_len=0 distinct_users=
+level=info ts=2026-10-29T13:33:50.37364188Z caller=checkpoint.go:612 msg="starting checkpoint"
+level=info ts=2026-10-29T13:33:50.373763793Z caller=checkpoint.go:337 msg="attempting checkpoint for" dir=/var/loki/wal/checkpoint.000001
+level=info ts=2026-10-29T13:33:50.373776428Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:33:50.373795917Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:33:56.374164723Z caller=tables_manager.go:76 msg="compactor startup delay completed"
+level=info ts=2026-10-29T13:33:56.374238174Z caller=tables_manager.go:145 msg="compactor started"
+level=info ts=2026-10-29T13:34:20.373891485Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:34:20.373922612Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:34:50.354324742Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:34:50.37446828Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:34:50.374496783Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:35:20.374563412Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:35:20.37460212Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:35:50.35419411Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:35:50.374440288Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:35:50.374466387Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:36:20.374403799Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:36:20.37444411Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:36:50.353417783Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:36:50.374681834Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:36:50.374719749Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:37:20.374675041Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:37:20.374717636Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:37:50.354151525Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:37:50.37405284Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:37:50.374088414Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:38:20.373779435Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:38:20.373814758Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:38:20.37580449Z caller=checkpoint.go:499 msg="atomic checkpoint finished" old=/var/loki/wal/checkpoint.000001.tmp new=/var/loki/wal/checkpoint.000001
+level=info ts=2026-10-29T13:38:20.37660221Z caller=checkpoint.go:570 msg="checkpoint done" time=4m30.002670845s
+level=info ts=2026-10-29T13:38:50.353925516Z caller=table_manager.go:239 index-store=tsdb-2024-04-01 msg="syncing tables"
+level=info ts=2026-10-29T13:38:50.353935066Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:38:50.354071276Z caller=table_manager.go:300 index-store=tsdb-2024-04-01 msg="query readiness setup completed" duration=3.014µs distinct_users_len=0 distinct_users=
+level=info ts=2026-10-29T13:38:50.373846247Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:38:50.373878756Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:38:50.373889166Z caller=checkpoint.go:612 msg="starting checkpoint"
+level=info ts=2026-10-29T13:38:50.374043779Z caller=checkpoint.go:337 msg="attempting checkpoint for" dir=/var/loki/wal/checkpoint.000002
+level=info ts=2026-10-29T13:39:20.37374867Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:39:20.373789843Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:39:50.354207218Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:39:50.374476177Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:39:50.374514661Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:40:20.373783553Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:40:20.373824095Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:40:50.353914384Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:40:50.373789708Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:40:50.373829909Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:41:20.373745592Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:41:20.373785752Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:41:50.354178028Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:41:50.374073615Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:41:50.374109103Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:42:20.373745089Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:42:20.37378547Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:42:50.354135933Z caller=table_manager.go:136 index-store=tsdb-2024-04-01 msg="uploading tables"
+level=info ts=2026-10-29T13:42:50.373965089Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:42:50.37400563Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:43:20.373947192Z caller=recalculate_owned_streams.go:49 msg="starting recalculate owned streams job"
+level=info ts=2026-10-29T13:43:20.373992731Z caller=recalculate_owned_streams.go:52 msg="completed recalculate owned streams job"
+level=info ts=2026-10-29T13:43:20.375345984Z caller=checkpoint.go:499 msg="atomic checkpoint finished" old=/var/loki/wal/checkpoint.000002.tmp new=/var/loki/wal/checkpoint.000002
+level=info ts=2026-10-29T13:43:20.376085728Z caller=checkpoint.go:570 msg="checkpoint done" time=4m30.001902339s
