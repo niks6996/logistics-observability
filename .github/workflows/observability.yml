@@ -1,8 +1,30 @@
 ﻿name: Observability lab
 on:
   push:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - 'tests/**'
+      - 'k8s/**'
+      - 'monitoring/**'
+      - 'scripts/**'
+      - 'Dockerfile'
+      - '.dockerignore'
+      - '.github/workflows/observability.yml'
+
   pull_request:
+    paths:
+      - 'app/**'
+      - 'tests/**'
+      - 'k8s/**'
+      - 'monitoring/**'
+      - 'scripts/**'
+      - 'Dockerfile'
+      - '.dockerignore'
+      - '.github/workflows/observability.yml'
+
   workflow_dispatch:
+
 permissions:
   contents: read
 jobs:

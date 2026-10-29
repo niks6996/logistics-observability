@@ -21,9 +21,24 @@ flowchart TD
 
 ## Status
 
-Implementation prepared. Kubernetes deployment, dashboard screenshots, alert runtime verification and
-Slack delivery remain pending until executed. See `evidence/README.md`.
-The lab uses ephemeral storage and no public ingress. It is not a production platform.
+Successfully deployed and tested on a temporary kind Kubernetes cluster
+through GitHub Actions.
+
+Validated API tests, container builds, Trivy scanning, Prometheus metrics,
+Loki log ingestion, and firing/resolved states for error, latency and
+availability alerts. Captured and visually reviewed the Grafana dashboard.
+
+This is a synthetic logistics lab with ephemeral storage.
+External Slack notification delivery has not been tested.
+
+## Dashboard evidence
+
+![Grafana dashboard showing synthetic traffic, errors, latency and pod resources](evidence/screenshots/03-grafana-dashboard.png)
+
+The dashboard captures controlled error and slow-response tests,
+recovery, and resource usage across original and replacement API pods.
+
+[View automated validation runs](https://github.com/niks6996/logistics-observability/actions)
 
 ## Run API tests without Docker
 
@@ -106,11 +121,11 @@ notification delivery. Each workflow checks firing before checking resolution.
 
 ## Evidence checklist
 
-- [ ] Successful API test job and security scan
-- [ ] Metrics returned from Prometheus
-- [ ] Application JSON logs returned from Loki
-- [ ] Error, latency and outage alerts fire and resolve
-- [ ] Grafana dashboard screenshots with generated traffic
+- [x] Successful API test job and security scan
+- [x] Metrics returned from Prometheus
+- [x] Application JSON logs returned from Loki
+- [x] Error, latency and outage alerts fire and resolve
+- [x] Grafana dashboard screenshots with generated traffic
 - [ ] Optional firing/resolved Slack notifications
 - [ ] Incident notes and installed chart versions
 - [ ] Disposable infrastructure deleted
