@@ -1,28 +1,62 @@
-deploymentMode: SingleBinary
+﻿deploymentMode: SingleBinary
+
 loki:
   auth_enabled: false
+
   commonConfig:
     replication_factor: 1
+
   schemaConfig:
     configs:
       - from: "2024-04-01"
         store: tsdb
         object_store: filesystem
         schema: v13
-        index: {prefix: index_, period: 24h}
+        index:
+          prefix: index_
+          period: 24h
+
   storage:
     type: filesystem
+
 singleBinary:
   replicas: 1
+
   persistence:
     enabled: false
+
+  extraVolumes:
+    - name: lab-loki-data
+      emptyDir: {}
+
+  extraVolumeMounts:
+    - name: lab-loki-data
+      mountPath: /var/loki
+
   resources:
-    requests: {cpu: 100m, memory: 128Mi}
-    limits: {memory: 512Mi}
-read: {replicas: 0}
-write: {replicas: 0}
-backend: {replicas: 0}
-chunksCache: {enabled: false}
-resultsCache: {enabled: false}
-lokiCanary: {enabled: false}
-test: {enabled: false}
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 512Mi
+
+read:
+  replicas: 0
+
+write:
+  replicas: 0
+
+backend:
+  replicas: 0
+
+chunksCache:
+  enabled: false
+
+resultsCache:
+  enabled: false
+
+lokiCanary:
+  enabled: false
+
+test:
+  enabled: false
