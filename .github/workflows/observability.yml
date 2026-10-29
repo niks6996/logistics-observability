@@ -88,7 +88,22 @@ jobs:
             exit 1
           fi
 
-          python scripts/traffic.py --seconds 180 > /tmp/dashboard-traffic.log 2>&1 &
+          kubectl port-forward -n logistics svc/logistics-api 18080:8080 > /tmp/dashboard-api-forward.log 2>&1 &
+
+          api_ready=false
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:18080/readyz; then
+              api_ready=true
+              break
+            fi
+            sleep 2
+          done
+          if [ "$api_ready" != "true" ]; then
+            cat /tmp/dashboard-api-forward.log
+            exit 1
+          fi
+
+          python scripts/traffic.py --url http://127.0.0.1:18080 --seconds 180 > /tmp/dashboard-traffic.log 2>&1 &
           traffic_pid=$!
           sleep 60
           python scripts/verify.py metrics
@@ -116,6 +131,7 @@ jobs:
       - name: Clean up disposable cluster
         if: always()
         run: kind delete cluster --name observability
+
 
 
 
