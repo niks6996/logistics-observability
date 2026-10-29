@@ -1,4 +1,4 @@
-﻿name: Observability lab
+name: Observability lab
 on:
   push:
     branches: [main]
@@ -46,6 +46,8 @@ jobs:
     needs: api-tests
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      EVIDENCE_DIR: artifacts/runtime
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -54,6 +56,18 @@ jobs:
         with: {version: v3.17.3}
       - uses: helm/kind-action@v1.12.0
         with: {cluster_name: observability}
+      - name: Initialise fresh evidence directory
+        run: |
+          python -c "from pathlib import Path; p = Path('artifacts/runtime'); p.mkdir(parents=True, exist_ok=False)"
+          python - <<'PYMETA'
+          import json, os
+          from pathlib import Path
+          Path('artifacts/runtime/run.json').write_text(json.dumps({
+              'commit': os.environ['GITHUB_SHA'],
+              'run_url': os.environ['GITHUB_SERVER_URL'] + '/' + os.environ['GITHUB_REPOSITORY'] + '/actions/runs/' + os.environ['GITHUB_RUN_ID'],
+              'attempt': os.environ['GITHUB_RUN_ATTEMPT']
+          }, indent=2))
+          PYMETA
       - run: |
           docker build -t logistics-api:lab .
           kind load docker-image logistics-api:lab --name observability
@@ -89,6 +103,14 @@ jobs:
           python scripts/verify.py down-firing
           kubectl scale deployment/logistics-api -n logistics --replicas=2
           kubectl rollout status deployment/logistics-api -n logistics --timeout=180s
+          kubectl port-forward -n logistics svc/logistics-api 18081:8080 > /tmp/recovery-forward.log 2>&1 &
+          ready=false
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:18081/readyz; then ready=true; break; fi
+            sleep 2
+          done
+          if [ "$ready" != "true" ]; then cat /tmp/recovery-forward.log; exit 1; fi
+          python scripts/traffic.py --url http://127.0.0.1:18081 --seconds 60
           python scripts/verify.py down-resolved
       - name: Capture Grafana dashboard
         run: |
@@ -135,20 +157,20 @@ jobs:
       - name: Collect diagnostics
         if: always()
         run: |
-          mkdir -p evidence
-          kubectl describe pod loki-0 -n monitoring > evidence/loki-description.txt 2>&1 || true
-          kubectl logs loki-0 -n monitoring -c loki --tail=200 > evidence/loki-current.txt 2>&1 || true
-          kubectl logs loki-0 -n monitoring -c loki --previous --tail=200 > evidence/loki-previous.txt 2>&1 || true
-          kubectl get pods -A -o wide > evidence/pods.txt
-          kubectl get events -A --sort-by=.lastTimestamp > evidence/events.txt
-          kubectl logs -n logistics -l app=logistics-api --all-containers --tail=100 > evidence/api-logs.txt 2>&1 || true
-          kubectl get prometheusrules,servicemonitors -n monitoring -o yaml > evidence/monitoring-resources.yaml
-          helm list -n monitoring -o json > evidence/chart-versions.json
+          mkdir -p artifacts/runtime
+          kubectl describe pod loki-0 -n monitoring > artifacts/runtime/loki-description.txt 2>&1 || true
+          kubectl logs loki-0 -n monitoring -c loki --tail=200 > artifacts/runtime/loki-current.txt 2>&1 || true
+          kubectl logs loki-0 -n monitoring -c loki --previous --tail=200 > artifacts/runtime/loki-previous.txt 2>&1 || true
+          kubectl get pods -A -o wide > artifacts/runtime/pods.txt 2>&1 || true
+          kubectl get events -A --sort-by=.lastTimestamp > artifacts/runtime/events.txt 2>&1 || true
+          kubectl logs -n logistics -l app=logistics-api --all-containers --tail=100 > artifacts/runtime/api-logs.txt 2>&1 || true
+          kubectl get prometheusrules,servicemonitors -n monitoring -o yaml > artifacts/runtime/monitoring-resources.yaml 2>&1 || true
+          helm list -n monitoring -o json > artifacts/runtime/chart-versions.json 2>&1 || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: observability-evidence
-          path: evidence/
+          path: artifacts/runtime/
           retention-days: 14
       - name: Clean up disposable cluster
         if: always()

@@ -4,3 +4,6 @@ __pycache__/
 *.secret.yaml
 evidence/*
 !evidence/README.md
+
+# Fresh CI output is separate from curated committed evidence.
+artifacts/

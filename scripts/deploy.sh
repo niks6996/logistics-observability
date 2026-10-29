@@ -22,5 +22,6 @@ kubectl apply -f k8s/app.yaml
 kubectl apply -f monitoring/resources.yaml
 kubectl create configmap logistics-dashboard -n monitoring --from-file=logistics.json=monitoring/dashboard.json --dry-run=client -o yaml | kubectl label --local -f - grafana_dashboard=1 -o yaml | kubectl apply -f -
 kubectl rollout status deployment/logistics-api -n logistics --timeout=180s
-mkdir -p evidence
-helm list -n monitoring -o json > evidence/chart-versions.json
+output_dir="${EVIDENCE_DIR:-artifacts/runtime}"
+mkdir -p "$output_dir"
+helm list -n monitoring -o json > "$output_dir/chart-versions.json"

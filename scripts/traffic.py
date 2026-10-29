@@ -22,3 +22,7 @@ while time.monotonic() < end:
     counts[code] = counts.get(code, 0) + 1
     time.sleep(0.1)
 print(counts)
+
+expected = '500' if a.mode == 'error' else '200'
+if counts.get(expected, 0) == 0 or any(code != expected for code in counts):
+    raise SystemExit('Traffic verification failed: unexpected status or connection error')

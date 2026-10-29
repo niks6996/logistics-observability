@@ -1,5 +1,5 @@
-﻿import base64
-import json
+import base64
+import os
 import subprocess
 import time
 from pathlib import Path
@@ -14,7 +14,8 @@ secret = subprocess.check_output([
 
 password = base64.b64decode(secret).decode()
 
-Path("evidence/screenshots").mkdir(parents=True, exist_ok=True)
+output = Path(os.getenv("EVIDENCE_DIR", "artifacts/runtime")) / "screenshots"
+output.mkdir(parents=True, exist_ok=True)
 
 with sync_playwright() as p:
     browser = p.chromium.launch()
@@ -54,7 +55,7 @@ with sync_playwright() as p:
     # Allow panel queries and graphs to finish rendering.
     page.wait_for_timeout(20000)
     page.screenshot(
-        path="evidence/screenshots/03-grafana-dashboard.png",
+        path=str(output / "03-grafana-dashboard.png"),
         full_page=True
     )
 

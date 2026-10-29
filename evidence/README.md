@@ -1,8 +1,19 @@
-# Evidence status
+# Evidence guide
 
-No Kubernetes runtime results or screenshots are included yet.
-Local API unit tests can be run using the command in the README.
-GitHub Actions uploads actual metrics, logs, firing/resolved alert query responses,
-chart versions, pod status and events as `observability-evidence`.
-Download successful workflow artifacts before their 14-day expiry and retain relevant redacted results here.
-Do not commit secrets or mark checks complete without a successful run.
+The committed successful-run directory contains reviewed historical lab results:
+metrics, logs, three firing/resolved alert pairs, chart versions and pod diagnostics.
+The screenshots directory contains workflow and dashboard captures.
+
+New workflow artifacts use a fresh artifacts/runtime directory and record run.json
+(commit, run URL and attempt). Keep that metadata with every newly curated run.
+Existing historical results predate this metadata format.
+
+Only preserve results from a successful run as successful evidence. Review artifacts
+for secrets before committing them. Empty resolved query results prove absence of
+firing series; stronger new checks also save healthy scrape/traffic responses.
+Slack notification delivery has not been tested.
+
+To replace a saved run, back up the old folder outside the repository, then extract
+one fresh successful artifact into evidence/successful-run. Do not merge multiple
+runs or recursively nest previous artifacts. Copy its dashboard screenshot into
+evidence/screenshots for the README.
