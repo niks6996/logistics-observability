@@ -7,22 +7,22 @@
         "stream": {
           "app": "logistics-api",
           "detected_level": "unknown",
-          "duration_seconds": "0.0001477719999911642",
-          "instance": "logistics/logistics-api-7954c4c5f-nbs5h:api",
+          "duration_seconds": "0.00020869000002221583",
+          "instance": "logistics/logistics-api-7954c4c5f-4nw9k:api",
           "job": "loki.source.kubernetes.logs",
           "namespace": "logistics",
-          "pod": "logistics-api-7954c4c5f-nbs5h",
-          "request_id": "c401b146-a7c4-4d7e-91ff-e5c8fc58efbc",
+          "pod": "logistics-api-7954c4c5f-4nw9k",
+          "request_id": "493e869a-abd5-42d4-a55d-ee4d728ed1f0",
           "route": "/deliveries/:id",
           "service": "logistics-api",
           "service_name": "logistics-api",
           "status": "200",
-          "timestamp": "1793280358.9104445"
+          "timestamp": "1793283120.3596828"
         },
         "values": [
           [
-            "1793280358910630106",
-            "{\"timestamp\": 1793280358.9104445, \"service\": \"logistics-api\", \"request_id\": \"c401b146-a7c4-4d7e-91ff-e5c8fc58efbc\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.0001477719999911642}\n"
+            "1793283120359820644",
+            "{\"timestamp\": 1793283120.3596828, \"service\": \"logistics-api\", \"request_id\": \"493e869a-abd5-42d4-a55d-ee4d728ed1f0\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00020869000002221583}\n"
           ]
         ]
       },
@@ -30,22 +30,22 @@
         "stream": {
           "app": "logistics-api",
           "detected_level": "unknown",
-          "duration_seconds": "0.00014444700002513855",
-          "instance": "logistics/logistics-api-7954c4c5f-nbs5h:api",
+          "duration_seconds": "0.00017213700002116639",
+          "instance": "logistics/logistics-api-7954c4c5f-4nw9k:api",
           "job": "loki.source.kubernetes.logs",
           "namespace": "logistics",
-          "pod": "logistics-api-7954c4c5f-nbs5h",
-          "request_id": "54ea0669-806c-4037-9960-ca7ac30d0a8d",
+          "pod": "logistics-api-7954c4c5f-4nw9k",
+          "request_id": "d30cc860-c0dd-4b7b-865d-cb085b1e2837",
           "route": "/deliveries/:id",
           "service": "logistics-api",
           "service_name": "logistics-api",
           "status": "200",
-          "timestamp": "1793280359.0129094"
+          "timestamp": "1793283120.4635243"
         },
         "values": [
           [
-            "1793280359013021814",
-            "{\"timestamp\": 1793280359.0129094, \"service\": \"logistics-api\", \"request_id\": \"54ea0669-806c-4037-9960-ca7ac30d0a8d\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00014444700002513855}\n"
+            "1793283120463812037",
+            "{\"timestamp\": 1793283120.4635243, \"service\": \"logistics-api\", \"request_id\": \"d30cc860-c0dd-4b7b-865d-cb085b1e2837\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00017213700002116639}\n"
           ]
         ]
       },
@@ -53,22 +53,22 @@
         "stream": {
           "app": "logistics-api",
           "detected_level": "unknown",
-          "duration_seconds": "0.0001428450000275916",
-          "instance": "logistics/logistics-api-7954c4c5f-nbs5h:api",
+          "duration_seconds": "0.00017049699999915902",
+          "instance": "logistics/logistics-api-7954c4c5f-4nw9k:api",
           "job": "loki.source.kubernetes.logs",
           "namespace": "logistics",
-          "pod": "logistics-api-7954c4c5f-nbs5h",
-          "request_id": "b333ba52-009a-49fa-8600-4ca1887e0d86",
+          "pod": "logistics-api-7954c4c5f-4nw9k",
+          "request_id": "c0dca67d-440a-4edc-9697-0c4f4db8fca1",
           "route": "/deliveries/:id",
           "service": "logistics-api",
           "service_name": "logistics-api",
           "status": "200",
-          "timestamp": "1793280359.4235103"
+          "timestamp": "1793283119.841332"
         },
         "values": [
           [
-            "1793280359423687842",
-            "{\"timestamp\": 1793280359.4235103, \"service\": \"logistics-api\", \"request_id\": \"b333ba52-009a-49fa-8600-4ca1887e0d86\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.0001428450000275916}\n"
+            "1793283119841595250",
+            "{\"timestamp\": 1793283119.841332, \"service\": \"logistics-api\", \"request_id\": \"c0dca67d-440a-4edc-9697-0c4f4db8fca1\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00017049699999915902}\n"
           ]
         ]
       },
@@ -76,22 +76,22 @@
         "stream": {
           "app": "logistics-api",
           "detected_level": "unknown",
-          "duration_seconds": "0.00013554399998838562",
-          "instance": "logistics/logistics-api-7954c4c5f-nbs5h:api",
+          "duration_seconds": "0.0001587129999904846",
+          "instance": "logistics/logistics-api-7954c4c5f-4nw9k:api",
           "job": "loki.source.kubernetes.logs",
           "namespace": "logistics",
-          "pod": "logistics-api-7954c4c5f-nbs5h",
-          "request_id": "ef4112ca-2c07-4a47-9145-ec277180728e",
+          "pod": "logistics-api-7954c4c5f-4nw9k",
+          "request_id": "94e24842-de2e-4913-9d85-43868761d218",
           "route": "/deliveries/:id",
           "service": "logistics-api",
           "service_name": "logistics-api",
           "status": "200",
-          "timestamp": "1793280359.2182708"
+          "timestamp": "1793283119.945554"
         },
         "values": [
           [
-            "1793280359218397989",
-            "{\"timestamp\": 1793280359.2182708, \"service\": \"logistics-api\", \"request_id\": \"ef4112ca-2c07-4a47-9145-ec277180728e\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00013554399998838562}\n"
+            "1793283119945780108",
+            "{\"timestamp\": 1793283119.945554, \"service\": \"logistics-api\", \"request_id\": \"94e24842-de2e-4913-9d85-43868761d218\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.0001587129999904846}\n"
           ]
         ]
       },
@@ -99,22 +99,22 @@
         "stream": {
           "app": "logistics-api",
           "detected_level": "unknown",
-          "duration_seconds": "0.00013408099999878687",
-          "instance": "logistics/logistics-api-7954c4c5f-nbs5h:api",
+          "duration_seconds": "0.00015830899999969006",
+          "instance": "logistics/logistics-api-7954c4c5f-4nw9k:api",
           "job": "loki.source.kubernetes.logs",
           "namespace": "logistics",
-          "pod": "logistics-api-7954c4c5f-nbs5h",
-          "request_id": "44c698f3-07e9-4cdb-a7c9-7e4a653859e2",
+          "pod": "logistics-api-7954c4c5f-4nw9k",
+          "request_id": "97b89e65-13ca-4017-8b72-ad405325743b",
           "route": "/deliveries/:id",
           "service": "logistics-api",
           "service_name": "logistics-api",
           "status": "200",
-          "timestamp": "1793280358.8078494"
+          "timestamp": "1793283119.736759"
         },
         "values": [
           [
-            "1793280358808045688",
-            "{\"timestamp\": 1793280358.8078494, \"service\": \"logistics-api\", \"request_id\": \"44c698f3-07e9-4cdb-a7c9-7e4a653859e2\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00013408099999878687}\n"
+            "1793283119736917996",
+            "{\"timestamp\": 1793283119.736759, \"service\": \"logistics-api\", \"request_id\": \"97b89e65-13ca-4017-8b72-ad405325743b\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00015830899999969006}\n"
           ]
         ]
       },
@@ -122,22 +122,22 @@
         "stream": {
           "app": "logistics-api",
           "detected_level": "unknown",
-          "duration_seconds": "0.00011924899996529348",
-          "instance": "logistics/logistics-api-7954c4c5f-nbs5h:api",
+          "duration_seconds": "0.0001508319999743435",
+          "instance": "logistics/logistics-api-7954c4c5f-4nw9k:api",
           "job": "loki.source.kubernetes.logs",
           "namespace": "logistics",
-          "pod": "logistics-api-7954c4c5f-nbs5h",
-          "request_id": "259bf1a3-92e1-47a4-ba27-9209289c7164",
+          "pod": "logistics-api-7954c4c5f-4nw9k",
+          "request_id": "4a183f55-ea0f-48be-9bcb-47da2b47a545",
           "route": "/deliveries/:id",
           "service": "logistics-api",
           "service_name": "logistics-api",
           "status": "200",
-          "timestamp": "1793280359.3208134"
+          "timestamp": "1793283120.2560709"
         },
         "values": [
           [
-            "1793280359320900448",
-            "{\"timestamp\": 1793280359.3208134, \"service\": \"logistics-api\", \"request_id\": \"259bf1a3-92e1-47a4-ba27-9209289c7164\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00011924899996529348}\n"
+            "1793283120256196951",
+            "{\"timestamp\": 1793283120.2560709, \"service\": \"logistics-api\", \"request_id\": \"4a183f55-ea0f-48be-9bcb-47da2b47a545\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.0001508319999743435}\n"
           ]
         ]
       },
@@ -145,22 +145,22 @@
         "stream": {
           "app": "logistics-api",
           "detected_level": "unknown",
-          "duration_seconds": "0.0001169960000311221",
-          "instance": "logistics/logistics-api-7954c4c5f-nbs5h:api",
+          "duration_seconds": "0.00013955599999349033",
+          "instance": "logistics/logistics-api-7954c4c5f-4nw9k:api",
           "job": "loki.source.kubernetes.logs",
           "namespace": "logistics",
-          "pod": "logistics-api-7954c4c5f-nbs5h",
-          "request_id": "181a6d25-c6da-4c78-a3d9-a8fe1c727ce8",
+          "pod": "logistics-api-7954c4c5f-4nw9k",
+          "request_id": "f7502822-7794-435b-ab90-f60029a68b4d",
           "route": "/deliveries/:id",
           "service": "logistics-api",
           "service_name": "logistics-api",
           "status": "200",
-          "timestamp": "1793280359.6283653"
+          "timestamp": "1793283120.152319"
         },
         "values": [
           [
-            "1793280359628563616",
-            "{\"timestamp\": 1793280359.6283653, \"service\": \"logistics-api\", \"request_id\": \"181a6d25-c6da-4c78-a3d9-a8fe1c727ce8\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.0001169960000311221}\n"
+            "1793283120152460969",
+            "{\"timestamp\": 1793283120.152319, \"service\": \"logistics-api\", \"request_id\": \"f7502822-7794-435b-ab90-f60029a68b4d\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00013955599999349033}\n"
           ]
         ]
       },
@@ -168,22 +168,22 @@
         "stream": {
           "app": "logistics-api",
           "detected_level": "unknown",
-          "duration_seconds": "0.00011681600000201797",
-          "instance": "logistics/logistics-api-7954c4c5f-nbs5h:api",
+          "duration_seconds": "0.00013942999999017047",
+          "instance": "logistics/logistics-api-7954c4c5f-4nw9k:api",
           "job": "loki.source.kubernetes.logs",
           "namespace": "logistics",
-          "pod": "logistics-api-7954c4c5f-nbs5h",
-          "request_id": "db382db6-b4c2-4669-9fe6-24d41b6cfc0e",
+          "pod": "logistics-api-7954c4c5f-4nw9k",
+          "request_id": "d785b89b-a325-4148-b9da-7d1494a3bdad",
           "route": "/deliveries/:id",
           "service": "logistics-api",
           "service_name": "logistics-api",
           "status": "200",
-          "timestamp": "1793280359.7309046"
+          "timestamp": "1793283120.567013"
         },
         "values": [
           [
-            "1793280359730989110",
-            "{\"timestamp\": 1793280359.7309046, \"service\": \"logistics-api\", \"request_id\": \"db382db6-b4c2-4669-9fe6-24d41b6cfc0e\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00011681600000201797}\n"
+            "1793283120567259006",
+            "{\"timestamp\": 1793283120.567013, \"service\": \"logistics-api\", \"request_id\": \"d785b89b-a325-4148-b9da-7d1494a3bdad\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00013942999999017047}\n"
           ]
         ]
       },
@@ -191,22 +191,22 @@
         "stream": {
           "app": "logistics-api",
           "detected_level": "unknown",
-          "duration_seconds": "0.00011645500001122855",
-          "instance": "logistics/logistics-api-7954c4c5f-nbs5h:api",
+          "duration_seconds": "0.00013403900001662805",
+          "instance": "logistics/logistics-api-7954c4c5f-4nw9k:api",
           "job": "loki.source.kubernetes.logs",
           "namespace": "logistics",
-          "pod": "logistics-api-7954c4c5f-nbs5h",
-          "request_id": "13acb9e6-fe31-485f-975f-47738d5f61d5",
+          "pod": "logistics-api-7954c4c5f-4nw9k",
+          "request_id": "328aa67f-83c2-4433-8797-5551f24ac628",
           "route": "/deliveries/:id",
           "service": "logistics-api",
           "service_name": "logistics-api",
           "status": "200",
-          "timestamp": "1793280359.115352"
+          "timestamp": "1793283120.048915"
         },
         "values": [
           [
-            "1793280359115562164",
-            "{\"timestamp\": 1793280359.115352, \"service\": \"logistics-api\", \"request_id\": \"13acb9e6-fe31-485f-975f-47738d5f61d5\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00011645500001122855}\n"
+            "1793283120049165326",
+            "{\"timestamp\": 1793283120.048915, \"service\": \"logistics-api\", \"request_id\": \"328aa67f-83c2-4433-8797-5551f24ac628\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00013403900001662805}\n"
           ]
         ]
       },
@@ -214,40 +214,40 @@
         "stream": {
           "app": "logistics-api",
           "detected_level": "unknown",
-          "duration_seconds": "0.00011535300001241922",
-          "instance": "logistics/logistics-api-7954c4c5f-nbs5h:api",
+          "duration_seconds": "0.00013140600000838276",
+          "instance": "logistics/logistics-api-7954c4c5f-4nw9k:api",
           "job": "loki.source.kubernetes.logs",
           "namespace": "logistics",
-          "pod": "logistics-api-7954c4c5f-nbs5h",
-          "request_id": "674ef924-a006-4183-a5e5-7a9dcb29dd2b",
+          "pod": "logistics-api-7954c4c5f-4nw9k",
+          "request_id": "32b2cc67-761c-4ce3-a5a8-92d2188c680e",
           "route": "/deliveries/:id",
           "service": "logistics-api",
           "service_name": "logistics-api",
           "status": "200",
-          "timestamp": "1793280359.5257688"
+          "timestamp": "1793283119.633003"
         },
         "values": [
           [
-            "1793280359525923015",
-            "{\"timestamp\": 1793280359.5257688, \"service\": \"logistics-api\", \"request_id\": \"674ef924-a006-4183-a5e5-7a9dcb29dd2b\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00011535300001241922}\n"
+            "1793283119633090074",
+            "{\"timestamp\": 1793283119.633003, \"service\": \"logistics-api\", \"request_id\": \"32b2cc67-761c-4ce3-a5a8-92d2188c680e\", \"route\": \"/deliveries/:id\", \"status\": 200, \"duration_seconds\": 0.00013140600000838276}\n"
           ]
         ]
       }
     ],
     "stats": {
       "summary": {
-        "bytesProcessedPerSecond": 15284176,
-        "linesProcessedPerSecond": 72693,
-        "totalBytesProcessed": 121318,
-        "totalLinesProcessed": 577,
-        "execTime": 0.007937,
-        "queueTime": 0.000213,
+        "bytesProcessedPerSecond": 10341557,
+        "linesProcessedPerSecond": 49144,
+        "totalBytesProcessed": 121208,
+        "totalLinesProcessed": 576,
+        "execTime": 0.01172,
+        "queueTime": 0.000314,
         "subqueries": 0,
         "totalEntriesReturned": 10,
         "splits": 1,
         "shards": 1,
-        "totalPostFilterLines": 577,
-        "totalStructuredMetadataBytesProcessed": 4616
+        "totalPostFilterLines": 576,
+        "totalStructuredMetadataBytesProcessed": 4608
       },
       "querier": {
         "store": {
@@ -299,17 +299,17 @@
           "queryReferencedStructuredMetadata": false,
           "queryUsedV2Engine": false,
           "chunk": {
-            "headChunkBytes": 121318,
-            "headChunkLines": 577,
+            "headChunkBytes": 121208,
+            "headChunkLines": 576,
             "decompressedBytes": 0,
             "decompressedLines": 0,
             "compressedBytes": 0,
             "totalDuplicates": 0,
-            "postFilterLines": 577,
-            "headChunkStructuredMetadataBytes": 4616,
+            "postFilterLines": 576,
+            "headChunkStructuredMetadataBytes": 4608,
             "decompressedStructuredMetadataBytes": 0
           },
-          "chunkRefsFetchTime": 94557,
+          "chunkRefsFetchTime": 156373,
           "congestionControlLatency": 0,
           "pipelineWrapperFilteredLines": 0,
           "dataobj": {

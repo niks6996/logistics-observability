@@ -7,14 +7,14 @@ items:
       kubectl.kubernetes.io/last-applied-configuration: |
         {"apiVersion":"monitoring.coreos.com/v1","kind":"PrometheusRule","metadata":{"annotations":{},"labels":{"release":"obs"},"name":"logistics-alerts","namespace":"monitoring"},"spec":{"groups":[{"name":"logistics","rules":[{"alert":"LogisticsHighErrorRate","annotations":{"runbook_url":"docs/runbooks.md#high-error-rate","summary":"Logistics API error ratio exceeds 5 percent"},"expr":"sum(rate(logistics_requests_total{status=~\"5..\"}[2m])) / clamp_min(sum(rate(logistics_requests_total[2m])), 0.001) \u003e 0.05","for":"1m","labels":{"project":"logistics","severity":"warning"}},{"alert":"LogisticsHighLatency","annotations":{"runbook_url":"docs/runbooks.md#high-latency","summary":"Logistics API p95 latency exceeds 500ms"},"expr":"histogram_quantile(0.95, sum by (le) (rate(logistics_request_duration_seconds_bucket[2m]))) \u003e 0.5","for":"1m","labels":{"project":"logistics","severity":"warning"}},{"alert":"LogisticsUnavailable","annotations":{"runbook_url":"docs/runbooks.md#unavailable","summary":"No logistics API scrape target is available"},"expr":"(sum(up{namespace=\"logistics\",service=\"logistics-api\"}) == 0) or absent(up{namespace=\"logistics\",service=\"logistics-api\"})","for":"1m","labels":{"project":"logistics","severity":"critical"}}]}]}}
       prometheus-operator-validated: "true"
-    creationTimestamp: "2026-10-29T13:24:57Z"
+    creationTimestamp: "2026-10-29T14:10:57Z"
     generation: 1
     labels:
       release: obs
     name: logistics-alerts
     namespace: monitoring
-    resourceVersion: "1241"
-    uid: 39f3733a-6958-42cc-a3c9-fd92e93ea87f
+    resourceVersion: "1202"
+    uid: e5870955-c980-449c-a2e5-7ae6f94163fa
   spec:
     groups:
     - name: logistics
@@ -54,7 +54,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -67,8 +67,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-alertmanager.rules
     namespace: monitoring
-    resourceVersion: "705"
-    uid: 8b303303-7679-4315-858d-a39138c4c677
+    resourceVersion: "696"
+    uid: db1f68cd-1851-48d1-836b-2b3abd9485e8
   spec:
     groups:
     - name: alertmanager.rules
@@ -232,7 +232,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -245,8 +245,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-config-reloaders
     namespace: monitoring
-    resourceVersion: "691"
-    uid: 0413e472-ee62-4467-9fbf-2bac0669f27b
+    resourceVersion: "687"
+    uid: 31bd4a2a-ab72-45c3-bf81-bdc182547d86
   spec:
     groups:
     - name: config-reloaders
@@ -269,7 +269,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -282,8 +282,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-general.rules
     namespace: monitoring
-    resourceVersion: "693"
-    uid: 2d4bed41-b73b-4257-bf0d-31ff46559be9
+    resourceVersion: "699"
+    uid: 4542efb1-e2cf-4a5f-b78e-82acca139bb6
   spec:
     groups:
     - name: general.rules
@@ -335,7 +335,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -348,8 +348,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-k8s.rules.container-cpu-usage-seconds
     namespace: monitoring
-    resourceVersion: "709"
-    uid: ac90b24c-db36-4470-bacd-535a67d261ab
+    resourceVersion: "679"
+    uid: 6e00f97f-1e76-43c2-a00c-658a2e83d743
   spec:
     groups:
     - name: k8s.rules.container_cpu_usage_seconds_total
@@ -374,7 +374,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -387,8 +387,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-k8s.rules.container-memory-cache
     namespace: monitoring
-    resourceVersion: "699"
-    uid: 3cd45ab8-21e1-42e4-96f4-7fa4b26607d1
+    resourceVersion: "686"
+    uid: ce684fdd-2192-4dc1-9011-3cad52bc9178
   spec:
     groups:
     - name: k8s.rules.container_memory_cache
@@ -405,7 +405,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -418,8 +418,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-k8s.rules.container-memory-rss
     namespace: monitoring
-    resourceVersion: "702"
-    uid: 951cbe7f-ec00-4e51-bb5f-ac5f933f5ed4
+    resourceVersion: "684"
+    uid: 3edbb0a1-5962-41dc-8a05-e371b59bec72
   spec:
     groups:
     - name: k8s.rules.container_memory_rss
@@ -436,7 +436,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -449,8 +449,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-k8s.rules.container-memory-swap
     namespace: monitoring
-    resourceVersion: "700"
-    uid: c1309907-b1ed-492c-a0ac-32bf95db68ff
+    resourceVersion: "701"
+    uid: 7762aee6-eac1-4aa2-9b71-1c63e2ff5bdb
   spec:
     groups:
     - name: k8s.rules.container_memory_swap
@@ -467,7 +467,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -480,8 +480,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-k8s.rules.container-memory-working-se
     namespace: monitoring
-    resourceVersion: "696"
-    uid: 42cafb91-c732-448a-a038-9911503556d2
+    resourceVersion: "675"
+    uid: 54cfcfb7-f099-4c7a-be40-a498d61c845e
   spec:
     groups:
     - name: k8s.rules.container_memory_working_set_bytes
@@ -498,7 +498,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -511,8 +511,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-k8s.rules.container-resource
     namespace: monitoring
-    resourceVersion: "706"
-    uid: d989ab37-5bac-4da8-b38e-ccb0117e3fc0
+    resourceVersion: "698"
+    uid: 09278676-173d-46a0-bb59-aff9436ba1d9
   spec:
     groups:
     - name: k8s.rules.container_resource
@@ -591,7 +591,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -604,8 +604,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-k8s.rules.pod-owner
     namespace: monitoring
-    resourceVersion: "727"
-    uid: 8e3ed8ca-d1d7-4223-a791-dfb144d40bc7
+    resourceVersion: "692"
+    uid: 7d983233-eed0-43db-89ab-95dca8e09471
   spec:
     groups:
     - name: k8s.rules.pod_owner
@@ -743,7 +743,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -756,8 +756,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kube-apiserver-availability.rules
     namespace: monitoring
-    resourceVersion: "719"
-    uid: 59f1d798-688a-4ccb-9cd2-6ca2d50df6ec
+    resourceVersion: "685"
+    uid: df6b6444-debe-4f5f-bfd1-789620d9cf67
   spec:
     groups:
     - interval: 3m
@@ -871,7 +871,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -884,8 +884,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kube-apiserver-burnrate.rules
     namespace: monitoring
-    resourceVersion: "707"
-    uid: aedc7940-106c-4d1a-b2c8-19cbc7042566
+    resourceVersion: "697"
+    uid: 407a5413-97b1-41ab-b996-a4f6d76f39f0
   spec:
     groups:
     - name: kube-apiserver-burnrate.rules
@@ -1135,7 +1135,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -1148,8 +1148,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kube-apiserver-histogram.rules
     namespace: monitoring
-    resourceVersion: "701"
-    uid: b7caab5f-0518-4fce-9a13-28a1a24fb100
+    resourceVersion: "702"
+    uid: a24037d2-fe5e-4094-a338-aa2a90c0d047
   spec:
     groups:
     - name: kube-apiserver-histogram.rules
@@ -1172,7 +1172,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -1185,8 +1185,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kube-apiserver-slos
     namespace: monitoring
-    resourceVersion: "720"
-    uid: 0b9f134f-503b-4908-8422-65c9fe42f791
+    resourceVersion: "680"
+    uid: 902edefa-99dd-44a5-8e5a-eb071e112550
   spec:
     groups:
     - name: kube-apiserver-slos
@@ -1257,7 +1257,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -1270,8 +1270,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kube-prometheus-general.rules
     namespace: monitoring
-    resourceVersion: "698"
-    uid: 47860969-f90d-4566-8fa6-9aec1964e32c
+    resourceVersion: "678"
+    uid: b6d9f677-d3d9-4df2-9a63-1a491b90cc21
   spec:
     groups:
     - name: kube-prometheus-general.rules
@@ -1286,7 +1286,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -1299,8 +1299,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kube-prometheus-node-recording.rules
     namespace: monitoring
-    resourceVersion: "717"
-    uid: 85e9d4c6-65f8-47d6-a0bc-9d1925370d2b
+    resourceVersion: "677"
+    uid: 0756e0cb-4405-4444-88bb-729ab9360296
   spec:
     groups:
     - name: kube-prometheus-node-recording.rules
@@ -1327,7 +1327,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -1340,8 +1340,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kube-state-metrics
     namespace: monitoring
-    resourceVersion: "711"
-    uid: b1426446-ae8a-45b3-99ce-ab9c9b4cbd84
+    resourceVersion: "676"
+    uid: f04781e1-352f-4d05-b55f-94a22d665c50
   spec:
     groups:
     - name: kube-state-metrics
@@ -1408,7 +1408,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -1421,8 +1421,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kubelet.rules
     namespace: monitoring
-    resourceVersion: "710"
-    uid: 7f5835ba-3517-4c64-bfac-51ad4d18d195
+    resourceVersion: "688"
+    uid: 91b5180c-16ea-4a38-b3af-e8516ad51c52
   spec:
     groups:
     - name: kubelet.rules
@@ -1463,7 +1463,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -1476,8 +1476,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kubernetes-apps
     namespace: monitoring
-    resourceVersion: "728"
-    uid: 0440f044-ecb1-482f-96b8-0f1554264ea8
+    resourceVersion: "703"
+    uid: 4912d769-e183-4cf3-838b-eb14a382781f
   spec:
     groups:
     - name: kubernetes-apps
@@ -1797,7 +1797,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -1810,8 +1810,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kubernetes-resources
     namespace: monitoring
-    resourceVersion: "721"
-    uid: e47b6fcc-2fb6-4d7e-b55d-8f5bd970f079
+    resourceVersion: "700"
+    uid: 4cfdc2b2-ebc8-4caf-acda-744f2b8fc013
   spec:
     groups:
     - name: kubernetes-resources
@@ -2018,7 +2018,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -2031,8 +2031,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kubernetes-storage
     namespace: monitoring
-    resourceVersion: "694"
-    uid: dbd7d966-cb56-49c5-a25d-b04c96e3b3a3
+    resourceVersion: "695"
+    uid: 28ad6de1-4dff-409b-b8b2-bbe805411ccf
   spec:
     groups:
     - name: kubernetes-storage
@@ -2152,7 +2152,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -2165,8 +2165,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kubernetes-system
     namespace: monitoring
-    resourceVersion: "712"
-    uid: 034b58c8-a6b1-49bc-8bf7-36b826e94b31
+    resourceVersion: "690"
+    uid: 2bf65b74-5c92-4f81-899f-a69e2ee13bd5
   spec:
     groups:
     - name: kubernetes-system
@@ -2203,7 +2203,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -2216,8 +2216,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kubernetes-system-apiserver
     namespace: monitoring
-    resourceVersion: "729"
-    uid: 452f572d-f14c-424a-ac85-1b449fb09135
+    resourceVersion: "689"
+    uid: 84fcc809-a132-4abe-baa8-f9996404ff16
   spec:
     groups:
     - name: kubernetes-system-apiserver
@@ -2310,7 +2310,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -2323,8 +2323,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kubernetes-system-kubelet
     namespace: monitoring
-    resourceVersion: "726"
-    uid: 6bb43c0d-6536-4988-a84c-302a51660684
+    resourceVersion: "682"
+    uid: 458a26e8-863b-4356-baae-624d44536ba4
   spec:
     groups:
     - name: kubernetes-system-kubelet
@@ -2544,7 +2544,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -2557,8 +2557,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-node-exporter
     namespace: monitoring
-    resourceVersion: "697"
-    uid: bb70be57-28d2-4ba5-8cc4-c81f616f51df
+    resourceVersion: "704"
+    uid: 21a8d234-3e1c-4c1e-8286-8c9f9a1a4b74
   spec:
     groups:
     - name: node-exporter
@@ -2926,7 +2926,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -2939,8 +2939,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-node-exporter.rules
     namespace: monitoring
-    resourceVersion: "716"
-    uid: 951a4bb2-e8d8-49ec-9bb4-92dc890ddd00
+    resourceVersion: "694"
+    uid: 4ba9e438-481a-41cf-aa0f-8dcf777216d5
   spec:
     groups:
     - name: node-exporter.rules
@@ -3033,7 +3033,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -3046,8 +3046,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-node-network
     namespace: monitoring
-    resourceVersion: "704"
-    uid: 42fa2d0a-2164-403e-854b-ea157d662e9f
+    resourceVersion: "683"
+    uid: 2abe78dc-cda0-41d5-b211-d18637687b91
   spec:
     groups:
     - name: node-network
@@ -3069,7 +3069,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -3082,8 +3082,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-node.rules
     namespace: monitoring
-    resourceVersion: "718"
-    uid: df5c4221-8a6b-4c5e-abae-cc41f8d5f0fa
+    resourceVersion: "691"
+    uid: cac5b1bb-865b-418b-b118-c049f720dcf2
   spec:
     groups:
     - name: node.rules
@@ -3130,7 +3130,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -3143,8 +3143,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-prometheus
     namespace: monitoring
-    resourceVersion: "695"
-    uid: e1bbfa93-122b-4d5b-bfb3-a20018a6c94c
+    resourceVersion: "693"
+    uid: 1cc5dbe3-f586-4b79-b809-f78ecef19f82
   spec:
     groups:
     - name: prometheus
@@ -3483,7 +3483,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack
@@ -3496,8 +3496,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-prometheus-operator
     namespace: monitoring
-    resourceVersion: "708"
-    uid: c8c954aa-4f8e-43f3-8d41-f8a0c9d5d0e7
+    resourceVersion: "681"
+    uid: de19b85e-4b8b-4237-a707-71a07f1a8e5a
   spec:
     groups:
     - name: prometheus-operator
@@ -3603,14 +3603,14 @@ items:
     annotations:
       kubectl.kubernetes.io/last-applied-configuration: |
         {"apiVersion":"monitoring.coreos.com/v1","kind":"ServiceMonitor","metadata":{"annotations":{},"labels":{"release":"obs"},"name":"logistics-api","namespace":"monitoring"},"spec":{"endpoints":[{"interval":"15s","path":"/metrics","port":"http"}],"namespaceSelector":{"matchNames":["logistics"]},"selector":{"matchLabels":{"app":"logistics-api"}}}}
-    creationTimestamp: "2026-10-29T13:24:57Z"
+    creationTimestamp: "2026-10-29T14:10:56Z"
     generation: 1
     labels:
       release: obs
     name: logistics-api
     namespace: monitoring
-    resourceVersion: "1240"
-    uid: 6041ec02-0475-4114-ad49-61f74c25bb4f
+    resourceVersion: "1201"
+    uid: d4acb471-55cb-4530-82de-d00272060abd
   spec:
     endpoints:
     - interval: 15s
@@ -3628,7 +3628,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app.kubernetes.io/instance: obs
@@ -3639,8 +3639,8 @@ items:
       release: obs
     name: obs-grafana
     namespace: monitoring
-    resourceVersion: "735"
-    uid: 1bc6a7db-f3d8-4e9e-8eaa-dfc4a174775c
+    resourceVersion: "713"
+    uid: f8feb995-a622-48a0-81a3-64478664ef25
   spec:
     endpoints:
     - honorLabels: true
@@ -3661,7 +3661,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack-alertmanager
@@ -3674,8 +3674,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-alertmanager
     namespace: monitoring
-    resourceVersion: "739"
-    uid: 7517cbd5-8bff-4ac0-bbcb-d0e3124555a3
+    resourceVersion: "705"
+    uid: 9acbf38a-eb56-42b7-bc2c-45b04eda7364
   spec:
     endpoints:
     - enableHttp2: true
@@ -3697,7 +3697,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack-apiserver
@@ -3710,8 +3710,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-apiserver
     namespace: monitoring
-    resourceVersion: "738"
-    uid: 10ce2b0d-dfc3-49bf-9e6a-3bd86b0d3cc3
+    resourceVersion: "708"
+    uid: f58f7e7c-ef8e-463a-9994-87dde7d41241
   spec:
     endpoints:
     - authorization:
@@ -3748,7 +3748,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack-coredns
@@ -3761,8 +3761,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-coredns
     namespace: monitoring
-    resourceVersion: "737"
-    uid: 54382623-3ec9-49f8-89d3-298eb1043393
+    resourceVersion: "712"
+    uid: 3577a73f-6e37-4e3c-a8d2-95b5a3a8dd18
   spec:
     endpoints:
     - authorization:
@@ -3785,7 +3785,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack-kubelet
@@ -3798,8 +3798,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-kubelet
     namespace: monitoring
-    resourceVersion: "742"
-    uid: 4a647a47-2ad7-4f09-962c-ef6f29648f95
+    resourceVersion: "706"
+    uid: b86b6ea2-a12a-44c8-8187-253aa18b4006
   spec:
     attachMetadata:
       node: false
@@ -3924,7 +3924,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack-operator
@@ -3939,8 +3939,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-operator
     namespace: monitoring
-    resourceVersion: "740"
-    uid: 8fd5c869-4298-46aa-b8c7-5dccad088a21
+    resourceVersion: "711"
+    uid: 98e499cf-6bbf-4202-98d5-7bd50bc9f78a
   spec:
     endpoints:
     - honorLabels: true
@@ -3966,7 +3966,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app: kube-prometheus-stack-prometheus
@@ -3979,8 +3979,8 @@ items:
       release: obs
     name: obs-kube-prometheus-stack-prometheus
     namespace: monitoring
-    resourceVersion: "733"
-    uid: abfa466d-46e9-432f-b9ef-d2e90a349e18
+    resourceVersion: "710"
+    uid: c6f3e2fd-e50b-4c98-9828-2f15577fab90
   spec:
     endpoints:
     - path: /metrics
@@ -4001,7 +4001,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app.kubernetes.io/component: metrics
@@ -4014,8 +4014,8 @@ items:
       release: obs
     name: obs-kube-state-metrics
     namespace: monitoring
-    resourceVersion: "736"
-    uid: 5e4a419a-681d-478e-9c22-7d9ee1a5c563
+    resourceVersion: "709"
+    uid: d8d2d0ba-8e1c-4025-afee-5a65591d0bcb
   spec:
     endpoints:
     - honorLabels: true
@@ -4031,7 +4031,7 @@ items:
     annotations:
       meta.helm.sh/release-name: obs
       meta.helm.sh/release-namespace: monitoring
-    creationTimestamp: "2026-10-29T13:23:07Z"
+    creationTimestamp: "2026-10-29T14:09:11Z"
     generation: 1
     labels:
       app.kubernetes.io/component: metrics
@@ -4044,8 +4044,8 @@ items:
       release: obs
     name: obs-prometheus-node-exporter
     namespace: monitoring
-    resourceVersion: "734"
-    uid: 4b7deaeb-4852-4bae-888a-87b135c5cfe1
+    resourceVersion: "707"
+    uid: ed63018c-1eff-45b9-b346-231ec2e32c0d
   spec:
     attachMetadata:
       node: false
