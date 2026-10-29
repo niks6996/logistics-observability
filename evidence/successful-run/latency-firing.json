@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "ALERTS",
+          "alertname": "LogisticsHighLatency",
+          "alertstate": "firing",
+          "project": "logistics",
+          "severity": "warning"
+        },
+        "value": [
+          1793259764.201,
+          "1"
+        ]
+      }
+    ]
+  }
+}

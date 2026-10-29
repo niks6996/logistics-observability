@@ -1,0 +1,21 @@
+NAMESPACE            NAME                                                    READY   STATUS    RESTARTS   AGE   IP            NODE                          NOMINATED NODE   READINESS GATES
+kube-system          coredns-668d6bf9bc-vfr2m                                1/1     Running   0          17m   10.244.0.3    observability-control-plane   <none>           <none>
+kube-system          coredns-668d6bf9bc-wzqkl                                1/1     Running   0          17m   10.244.0.2    observability-control-plane   <none>           <none>
+kube-system          etcd-observability-control-plane                        1/1     Running   0          17m   172.18.0.2    observability-control-plane   <none>           <none>
+kube-system          kindnet-w69gs                                           1/1     Running   0          17m   172.18.0.2    observability-control-plane   <none>           <none>
+kube-system          kube-apiserver-observability-control-plane              1/1     Running   0          17m   172.18.0.2    observability-control-plane   <none>           <none>
+kube-system          kube-controller-manager-observability-control-plane     1/1     Running   0          17m   172.18.0.2    observability-control-plane   <none>           <none>
+kube-system          kube-proxy-xffqd                                        1/1     Running   0          17m   172.18.0.2    observability-control-plane   <none>           <none>
+kube-system          kube-scheduler-observability-control-plane              1/1     Running   0          17m   172.18.0.2    observability-control-plane   <none>           <none>
+local-path-storage   local-path-provisioner-58cc7856b6-b29sg                 1/1     Running   0          17m   10.244.0.4    observability-control-plane   <none>           <none>
+logistics            logistics-api-7954c4c5f-9d28l                           1/1     Running   0          11s   10.244.0.18   observability-control-plane   <none>           <none>
+logistics            logistics-api-7954c4c5f-c8xmw                           1/1     Running   0          11s   10.244.0.17   observability-control-plane   <none>           <none>
+monitoring           alertmanager-obs-kube-prometheus-stack-alertmanager-0   2/2     Running   0          16m   10.244.0.9    observability-control-plane   <none>           <none>
+monitoring           alloy-667468548b-crv2q                                  2/2     Running   0          15m   10.244.0.14   observability-control-plane   <none>           <none>
+monitoring           loki-0                                                  2/2     Running   0          15m   10.244.0.13   observability-control-plane   <none>           <none>
+monitoring           loki-gateway-6679d6d588-t4fhf                           1/1     Running   0          15m   10.244.0.12   observability-control-plane   <none>           <none>
+monitoring           obs-grafana-5bbcf44758-h4shn                            3/3     Running   0          16m   10.244.0.8    observability-control-plane   <none>           <none>
+monitoring           obs-kube-prometheus-stack-operator-5d85f5b49f-skk8m     1/1     Running   0          16m   10.244.0.6    observability-control-plane   <none>           <none>
+monitoring           obs-kube-state-metrics-766f487455-wn8zf                 1/1     Running   0          16m   10.244.0.7    observability-control-plane   <none>           <none>
+monitoring           obs-prometheus-node-exporter-sfcxm                      1/1     Running   0          16m   172.18.0.2    observability-control-plane   <none>           <none>
+monitoring           prometheus-obs-kube-prometheus-stack-prometheus-0       2/2     Running   0          16m   10.244.0.10   observability-control-plane   <none>           <none>

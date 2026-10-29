@@ -1,0 +1,1 @@
+Error from server (BadRequest): previous terminated container "loki" in pod "loki-0" not found

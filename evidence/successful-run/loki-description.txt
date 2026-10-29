@@ -1,0 +1,121 @@
+Name:             loki-0
+Namespace:        monitoring
+Priority:         0
+Service Account:  loki
+Node:             observability-control-plane/172.18.0.2
+Start Time:       Thu, 29 Oct 2026 07:31:36 +0000
+Labels:           app.kubernetes.io/component=single-binary
+                  app.kubernetes.io/instance=loki
+                  app.kubernetes.io/name=loki
+                  app.kubernetes.io/part-of=memberlist
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=loki-7c8bb94dd5
+                  statefulset.kubernetes.io/pod-name=loki-0
+Annotations:      checksum/config: 4136d5faed8c3101ff1c9387c4ecbbf0d4d11ccb89293f553ea99b0e6deec7f9
+                  kubectl.kubernetes.io/default-container: loki
+Status:           Running
+IP:               10.244.0.13
+IPs:
+  IP:           10.244.0.13
+Controlled By:  StatefulSet/loki
+Containers:
+  loki:
+    Container ID:  containerd://d4f631494f8b2c974790375245054f50924e4a934a11d5f5f77f884d28d989b3
+    Image:         docker.io/grafana/loki:3.6.11
+    Image ID:      docker.io/grafana/loki@sha256:44148ad243c07957113baea950ee5ba9b0c8eff8d7e38ff3cc1c0af705790945
+    Ports:         3100/TCP, 9095/TCP, 7946/TCP
+    Host Ports:    0/TCP, 0/TCP, 0/TCP
+    Args:
+      -config.file=/etc/loki/config/config.yaml
+      -target=all
+    State:          Running
+      Started:      Thu, 29 Oct 2026 07:31:40 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      memory:  512Mi
+    Requests:
+      cpu:        100m
+      memory:     128Mi
+    Readiness:    http-get http://:http-metrics/ready delay=15s timeout=1s period=10s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /etc/loki/config from config (rw)
+      /etc/loki/runtime-config from runtime-config (rw)
+      /rules from sc-rules-volume (rw)
+      /tmp from tmp (rw)
+      /var/loki from lab-loki-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-hs8qx (ro)
+  loki-sc-rules:
+    Container ID:   containerd://4cdc79562d14267191ae07bcc718dbe0efae2af4ee1c54c3ca02b48fe19e1eae
+    Image:          docker.io/kiwigrid/k8s-sidecar:2.5.0
+    Image ID:       docker.io/kiwigrid/k8s-sidecar@sha256:a6b3f707f883108376514489a94d6629109a327b2978e1d826cd104c4ca436df
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Thu, 29 Oct 2026 07:31:44 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      METHOD:                WATCH
+      LABEL:                 loki_rule
+      FOLDER:                /rules
+      RESOURCE:              both
+      WATCH_SERVER_TIMEOUT:  60
+      WATCH_CLIENT_TIMEOUT:  60
+      LOG_LEVEL:             INFO
+    Mounts:
+      /rules from sc-rules-volume (rw)
+      /tmp from tmp (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-hs8qx (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  tmp:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      loki
+    Optional:  false
+  runtime-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      loki-runtime
+    Optional:  false
+  sc-rules-volume:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  lab-loki-data:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-hs8qx:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                From               Message
+  ----     ------     ----               ----               -------
+  Normal   Scheduled  15m                default-scheduler  Successfully assigned monitoring/loki-0 to observability-control-plane
+  Normal   Pulling    15m                kubelet            Pulling image "docker.io/grafana/loki:3.6.11"
+  Normal   Pulled     15m                kubelet            Successfully pulled image "docker.io/grafana/loki:3.6.11" in 2.676s (2.676s including waiting). Image size: 43179679 bytes.
+  Normal   Created    15m                kubelet            Created container: loki
+  Normal   Started    15m                kubelet            Started container loki
+  Normal   Pulling    15m                kubelet            Pulling image "docker.io/kiwigrid/k8s-sidecar:2.5.0"
+  Normal   Pulled     15m                kubelet            Successfully pulled image "docker.io/kiwigrid/k8s-sidecar:2.5.0" in 2.404s (4.262s including waiting). Image size: 23422974 bytes.
+  Normal   Created    15m                kubelet            Created container: loki-sc-rules
+  Normal   Started    15m                kubelet            Started container loki-sc-rules
+  Warning  Unhealthy  15m (x2 over 15m)  kubelet            Readiness probe failed: HTTP probe failed with statuscode: 503
