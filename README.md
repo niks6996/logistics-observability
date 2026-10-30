@@ -18,16 +18,57 @@ after that evidence was captured and require a new successful CI run.
 
 ## Architecture
 
+The stack runs in a disposable kind Kubernetes cluster. GitHub Actions
+builds and loads the API image, deploys the monitoring stack, runs controlled
+fault tests and captures evidence before removing the cluster.
+
+### Metrics, logs and dashboards
+
 ```mermaid
 flowchart TD
-  T["Synthetic traffic"] --> A["Delivery API: two replicas"]
-  P["Prometheus"] -->|scrapes| A
-  A -->|stdout logs| C["Grafana Alloy"]
-  C --> L["Loki"]
-  P --> G["Grafana dashboards"]
-  L --> G
-  P --> M["Alertmanager: null receiver"]
+    T["Synthetic traffic and controlled faults"] --> A["Delivery API: two replicas"]
+    P["Prometheus"] -->|Scrapes metrics| A
+    A -->|Container stdout logs| C["Grafana Alloy"]
+    C -->|Ships logs| L["Loki"]
+    G["Grafana"] -->|Queries metrics| P
+    G -->|Queries logs| L
+    P -->|Routes firing and resolved alerts| M["Alertmanager"]
+    M --> N["Null receiver: no external delivery"]
 ```
+
+Prometheus collects application metrics and evaluates alert rules.
+Grafana queries Prometheus for metrics and Loki for application logs.
+Grafana Alloy collects the API's container logs and forwards them to Loki.
+
+The default Alertmanager receiver discards notifications. Slack is an
+optional configuration and its delivery has not been tested.
+
+### Incident validation
+
+The lab introduces three controlled fault scenarios:
+
+| Scenario | Fault introduced | Expected detection |
+|---|---|---|
+| Errors | Synthetic HTTP 500 responses | Error-rate alert fires |
+| Latency | Deliberately slow responses | Latency alert fires |
+| Availability | API Deployment scaled to zero | API-down alert fires |
+
+After each scenario, the test restores normal operation and checks recovery.
+The updated recovery checks require no firing alert, healthy scrape targets
+and a positive request rate.
+
+The API normally runs with two replicas. The outage test deliberately
+removes both by scaling the Deployment to zero. This demonstrates outage
+detection and recovery, not high availability.
+
+### Environment and evidence boundaries
+
+- The stack runs in temporary CI or a disposable local kind cluster.
+- This project provisions no AWS resources.
+- Storage is ephemeral and Loki runs as a single instance.
+- Alert state validation does not prove delivery to Slack or email.
+- Saved evidence demonstrates the code version that produced it.
+- Stronger recovery checks require a successful run of the updated workflow.
 
 ## Technologies and versions
 
